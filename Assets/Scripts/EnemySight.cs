@@ -13,18 +13,20 @@ public class EnemySight : MonoBehaviour
     private SphereCollider col;
     private Animator anim;
     private LastPlayerSighting lastPlayerSighting;
-    private Animator playerAnim;            
+    private Animator playerAnim;
+	private PlayerHealth playerHealth;
 
     void Start()
     {
-        nav = GetComponent<NavMeshAgent>();       
-        col = GetComponent<SphereCollider>();
-        anim = GetComponent<Animator>();
-        lastPlayerSighting = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<LastPlayerSighting>();
-        playerAnim = player.GetComponent<Animator>();
+		nav = GetComponent<NavMeshAgent>();       
+		col = GetComponent<SphereCollider>();
+		anim = GameObject.FindGameObjectWithTag(Tags.enemy).GetComponent<Animator>();
+        lastPlayerSighting = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<LastPlayerSighting>();        
         player = GameObject.FindGameObjectWithTag(Tags.player);
-
-        personalLastSighting = lastPlayerSighting.resetPosition;
+		playerAnim = player.GetComponent<Animator>();
+		playerHealth = player.GetComponent<PlayerHealth> ();
+        
+		personalLastSighting = lastPlayerSighting.resetPosition;
         previousSighting = lastPlayerSighting.resetPosition;
     }
 

@@ -19,13 +19,13 @@ public class WeaponCharacteristic : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		while (!InMyPoses) 
+		/*while (!InMyPoses) 
 		{
 			gameObject.SetActive (false);
-		}
+		}*/
 
-		IsActivated = Active;
-		InMyPoses = GetPoses();
+		//IsActivated = Active;
+		//InMyPoses = GetPoses();
 	}
 
 	public bool GetPoses()

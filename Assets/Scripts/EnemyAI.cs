@@ -20,12 +20,12 @@ public class EnemyAI : MonoBehaviour
 
 	// Use this for initialization
 	void Start ()
-    {
-        enemySight = GetComponent<EnemySight>();
-        nav = GetComponent<NavMeshAgent>();
-        player = GameObject.FindGameObjectWithTag(Tags.player).transform;
-        playerHealth = player.GetComponent<PlayerHealth>();
-        lastPlayerSighting = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<LastPlayerSighting>();
+	{
+		enemySight = GetComponent<EnemySight> ();
+		nav = GetComponent<NavMeshAgent> ();
+		player = GameObject.FindGameObjectWithTag (Tags.player).transform;
+		playerHealth = player.GetComponent<PlayerHealth> ();
+		lastPlayerSighting = GetComponent<LastPlayerSighting> ();
 	}
 	
 	// Update is called once per frame
