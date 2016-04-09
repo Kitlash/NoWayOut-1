@@ -20,10 +20,11 @@ public class EnemySight : MonoBehaviour
     {
 		nav = GetComponent<NavMeshAgent>();       
 		col = GetComponent<SphereCollider>();
-		anim = GameObject.FindGameObjectWithTag(Tags.enemy).GetComponent<Animator>();
+		 // anim = GetComponent<Animator> ();
+		anim = GameObject.FindGameObjectWithTag(Tags.enemy).GetComponent<Animator>(); // inutile si tu places ton script sur ton prefab ennemy, la ligne au dessus est suffisante je pense 
         lastPlayerSighting = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<LastPlayerSighting>();        
         player = GameObject.FindGameObjectWithTag(Tags.player);
-		playerAnim = player.GetComponent<Animator>();
+		playerAnim = player.GetComponent<Animator>(); // pourquoi t'as besoin de l'animator tu playor?
 		playerHealth = player.GetComponent<PlayerHealth> ();
         
 		personalLastSighting = lastPlayerSighting.resetPosition;

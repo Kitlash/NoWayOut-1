@@ -24,6 +24,14 @@ public class PlayerHealth : MonoBehaviour
 
 	#endregion
 
+	void Start()
+	{
+		healthRec = new Rect (Screen.width / 2, Screen.height * 9 / 10, Screen.width / 3, Screen.height / 50);
+		healthTexture = new Texture2D (1, 1);
+		healthTexture.SetPixel (0, 0, Color.red);
+		healthTexture.Apply ();
+	}
+
     void Awake()
     {
        
