@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float jumpForce = 5f;
 
+	bool IsJumping;
+
     [SerializeField]
     private Camera playerView;
 
@@ -21,6 +23,8 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
     Vector3 velocity = Vector3.zero;
     Vector3 rotation = Vector3.zero;
+
+	bool IsMoving;
 
 	#region : sprint stuff
 	bool IsRunning;
@@ -53,6 +57,7 @@ public class PlayerController : MonoBehaviour
 
 	void Update () 
     {
+
         float movX = Input.GetAxisRaw("Horizontal");
         float movZ = Input.GetAxisRaw("Vertical");
 
@@ -102,10 +107,12 @@ public class PlayerController : MonoBehaviour
         float _jump;
         if (Input.GetButton("Jump"))
         {
+			IsJumping = true;
             _jump = jumpForce;
         }
         else
         {
+			IsJumping = false;
             _jump = 0f;
         }
 
@@ -125,7 +132,9 @@ public class PlayerController : MonoBehaviour
         if (velocity != Vector3.zero)
         {
             rb.MovePosition(rb.position + velocity * Time.fixedDeltaTime);
+			IsMoving = true;
         }
+		IsMoving = false;
     }
 	#endregion
 
