@@ -34,7 +34,7 @@ public class EnemyAI : MonoBehaviour
         if (enemySight.playerInSight && playerHealth.health > 0f)
             Shooting();
 
-        else if (enemySight.personalLastSighting != lastPlayerSighting.resetPosition && playerHealth.health > 0f)
+        else if (enemySight.personalLastSighting != lastPlayerSighting.resetPosition)
             Chasing();
 
         else
