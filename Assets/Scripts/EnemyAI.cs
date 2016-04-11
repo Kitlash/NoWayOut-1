@@ -31,11 +31,20 @@ public class EnemyAI : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (enemySight.playerInSight && playerHealth.health > 0f)
-            Shooting();
+        
 
-        else if (enemySight.personalLastSighting != lastPlayerSighting.resetPosition)
+        if (enemySight.playerInSight)
+        {
+            Debug.Log("shooting");
+            Shooting();
+        }
+
+        else if (enemySight.personalLastSighting != enemySight.resetPosition)
+        {
             Chasing();
+            Debug.Log("chase");
+        }
+            
 
         else
             Patrolling();  
@@ -44,6 +53,7 @@ public class EnemyAI : MonoBehaviour
     void Shooting()
     {
         nav.Stop();
+        Debug.Log("shot");
     }
 
     void Chasing()
@@ -73,8 +83,19 @@ public class EnemyAI : MonoBehaviour
     void Patrolling()
     {
         nav.speed = patrolSpeed;
+        
 
-        if (nav.destination == lastPlayerSighting.resetPosition || nav.remainingDistance < nav.stoppingDistance)
+        while (nav.remainingDistance < nav.stoppingDistance)
+        {
+            Debug.Log("This waypoint");
+            wayPointIndex++;
+            Debug.Log("next waypoint");
+        }
+
+        nav.destination = patrolWayPoints[wayPointIndex].position;
+
+        Debug.Log("Next round");
+        /*if (nav.remainingDistance < nav.stoppingDistance)
         {
             patrolTimer += Time.deltaTime;
 
@@ -89,8 +110,8 @@ public class EnemyAI : MonoBehaviour
             }
         }
         else
-            patrolTimer = 0;
+            patrolTimer = 0;*/
 
-        nav.destination = patrolWayPoints[wayPointIndex].position;
+       
     }
 }
