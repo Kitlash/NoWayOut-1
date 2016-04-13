@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float jumpForce = 5f;
 
+
     [SerializeField]
     private Camera playerView;
 
@@ -22,8 +23,10 @@ public class PlayerController : MonoBehaviour
     Vector3 velocity = Vector3.zero;
     Vector3 rotation = Vector3.zero;
 
+
+	Animator anim;
+
 	#region : sprint stuff
-	bool IsRunning;
 
 	[SerializeField]
 	float stamina = 5, MaxStamina = 5;
@@ -49,10 +52,13 @@ public class PlayerController : MonoBehaviour
 		staminaTexture = new Texture2D (1, 1);
 		staminaTexture.SetPixel (0, 0, Color.grey);
 		staminaTexture.Apply ();
+
+		anim = GetComponent<Animator>();
 	}
 
 	void Update () 
     {
+
         float movX = Input.GetAxisRaw("Horizontal");
         float movZ = Input.GetAxisRaw("Vertical");
 
@@ -65,19 +71,19 @@ public class PlayerController : MonoBehaviour
 		if (Input.GetKey (KeyCode.LeftShift)) 
 		{
 			_sprintcoeff = sprintCoeff;
-			IsRunning = true;
+			anim.SetBool("IsRunning", true);
 			stamina -= Time.deltaTime;
 			if (stamina < 0) {
 				stamina = 0;
 				_sprintcoeff = 1f;
-				IsRunning = false;
+				anim.SetBool("IsRunning", false);
 			}
 			
 		} 
 		else 
 		{
 			_sprintcoeff = 1f;
-			IsRunning = false;
+			anim.SetBool("IsRunning", false);
 			if (stamina < MaxStamina)
 				stamina += Time.deltaTime;
 		}
@@ -102,10 +108,12 @@ public class PlayerController : MonoBehaviour
         float _jump;
         if (Input.GetButton("Jump"))
         {
+			anim.SetBool("IsJumping", true);
             _jump = jumpForce;
         }
         else
         {
+			anim.SetBool("IsJumping", false);
             _jump = 0f;
         }
 
@@ -125,7 +133,10 @@ public class PlayerController : MonoBehaviour
         if (velocity != Vector3.zero)
         {
             rb.MovePosition(rb.position + velocity * Time.fixedDeltaTime);
+			//anim.SetBool ("IsMoving", true);
         }
+		//anim.SetBool ("IsMoving", false);
+
     }
 	#endregion
 

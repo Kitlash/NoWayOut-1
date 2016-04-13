@@ -11,40 +11,49 @@ public class EnemySight : MonoBehaviour
     private NavMeshAgent nav;
     private Vector3 previousSighting;
     private SphereCollider col;
-    private Animator anim;
-    private LastPlayerSighting lastPlayerSighting;
-    private Animator playerAnim;
+    public Vector3 resetPosition = new Vector3(100000f, 100000f, 100000f);
+    //private Animator anim;
+    
+    //private Animator playerAnim;
 	private PlayerHealth playerHealth;
 
     void Start()
     {
 		nav = GetComponent<NavMeshAgent>();       
 		col = GetComponent<SphereCollider>();
-		anim = GameObject.FindGameObjectWithTag(Tags.enemy).GetComponent<Animator>();
-        lastPlayerSighting = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<LastPlayerSighting>();        
+		//anim = GetComponent<Animator> ();
+		//anim = GameObject.FindGameObjectWithTag(Tags.enemy).GetComponent<Animator>(); // inutile si tu places ton script sur ton prefab ennemy, la ligne au dessus est suffisante je pense 
+        //lastPlayerSighting = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<LastPlayerSighting>();        
         player = GameObject.FindGameObjectWithTag(Tags.player);
-		playerAnim = player.GetComponent<Animator>();
+		//playerAnim = player.GetComponent<Animator>(); // pourquoi t'as besoin de l'animator tu playor?
 		playerHealth = player.GetComponent<PlayerHealth> ();
         
-		personalLastSighting = lastPlayerSighting.resetPosition;
-        previousSighting = lastPlayerSighting.resetPosition;
+		
+        personalLastSighting = resetPosition;
     }
 
     void Update()
     {
-        if (lastPlayerSighting.position != previousSighting)
+        if (playerInSight == true)
+            personalLastSighting = player.transform.position;
+        else
+            personalLastSighting = resetPosition;
+        /*if (lastPlayerSighting.position != previousSighting)
             personalLastSighting = lastPlayerSighting.position;
 
-        previousSighting = lastPlayerSighting.position;
+        previousSighting = lastPlayerSighting.position;*/
     }
 
     void OnTriggerStay(Collider other)
     {
+        Debug.Log("bla");
         if(other.gameObject == player)
         {
             playerInSight = false;
+            Debug.Log("not in sight");
 
             Vector3 direction = other.transform.position - transform.position;
+            //nav.SetDestination(direction);
             float angle = Vector3.Angle(direction, transform.forward);
 
             if(angle < fieldOfViewAngle * 0.5f)
@@ -56,7 +65,8 @@ public class EnemySight : MonoBehaviour
                     if(hit.collider.gameObject == player)
                     {
                         playerInSight = true;
-                        lastPlayerSighting.position = player.transform.position;
+                        Debug.Log("in sight");
+                        
                     }
                 }
             }
@@ -70,6 +80,7 @@ public class EnemySight : MonoBehaviour
         if(other.gameObject == player)
         {
             playerInSight = false;
+            Debug.Log("exit");
         }
     }
 

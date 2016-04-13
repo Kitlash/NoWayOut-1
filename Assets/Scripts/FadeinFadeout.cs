@@ -52,7 +52,7 @@ public class SceneFadeInOut : MonoBehaviour
         {
 			//Use LoadScene
 			//StartScene();
-			Application.LoadLevel(0);
+			;
         }   
         // Once the color of the screen is dark enough it goes to the next level       
     }
