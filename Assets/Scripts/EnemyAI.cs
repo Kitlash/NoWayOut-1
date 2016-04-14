@@ -83,35 +83,41 @@ public class EnemyAI : MonoBehaviour
     void Patrolling()
     {
         nav.speed = patrolSpeed;
+        wayPointIndex = 0;
+
+        if (nav.destination == nav.nextPosition)
+        {
+            wayPointIndex++;
+            nav.destination = patrolWayPoints[wayPointIndex].position;
+        }
+            
+            
+        else
+            nav.destination = patrolWayPoints[wayPointIndex].position;
         
 
-        while (nav.remainingDistance < nav.stoppingDistance)
-        {
-            Debug.Log("This waypoint");
+       /*patrolTimer += Time.deltaTime;
+       if (wayPointIndex == patrolWayPoints.Length - 1)
+            wayPointIndex = 0;
+       else
             wayPointIndex++;
-            Debug.Log("next waypoint");
-        }
-
-        nav.destination = patrolWayPoints[wayPointIndex].position;
 
         Debug.Log("Next round");
         /*if (nav.remainingDistance < nav.stoppingDistance)
         {
-            patrolTimer += Time.deltaTime;
-
-            if (patrolTimer >= patrolWaitTime)
+            
+            /*if (patrolTimer >= patrolWaitTime)
             {
-                if (wayPointIndex == patrolWayPoints.Length - 1)
-                    wayPointIndex = 0;
-                else
-                    wayPointIndex++;
+                
 
                 patrolTimer = 0;
             }
+
+            
         }
         else
-            patrolTimer = 0;*/
-
-       
+            patrolTimer = 0;
+        
+        nav.destination = patrolWayPoints[wayPointIndex].position;*/
     }
 }
