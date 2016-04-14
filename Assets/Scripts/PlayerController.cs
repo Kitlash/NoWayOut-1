@@ -133,9 +133,11 @@ public class PlayerController : MonoBehaviour
         if (velocity != Vector3.zero)
         {
             rb.MovePosition(rb.position + velocity * Time.fixedDeltaTime);
-			//anim.SetBool ("IsMoving", true);
+			anim.SetBool ("IsMoving", true);
+			Debug.Log (anim.GetBool ("IsMoving") + "");
         }
-		//anim.SetBool ("IsMoving", false);
+		anim.SetBool ("IsMoving", false);
+		Debug.Log (anim.GetBool ("IsMoving") + "");
 
     }
 	#endregion
@@ -165,5 +167,7 @@ public class PlayerController : MonoBehaviour
 
 		//Draw the bar
 		GUI.DrawTexture(staminaRec, staminaTexture);
+
+		GUI.Label (new Rect (450, 5, 30, 30), GameVariables.nbcoin + "");
 	}
 }

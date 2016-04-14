@@ -11,10 +11,5 @@ public class Coin : MonoBehaviour
 			Destroy (gameObject);
 		}
 	}
-
-	void OnGUI()
-	{
-		GUI.Label (new Rect (450, 5, 30, 30), GameVariables.nbcoin + "");
-	}
 }
 
