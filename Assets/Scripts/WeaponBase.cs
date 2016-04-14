@@ -27,7 +27,13 @@ public class WeaponBase : MonoBehaviour
 
 		GameVariables.cur_weapon = 0;
 
+
 		weapons [0].SetActive (true);
+
+		for (int i = 1; i < weapons.Length; i++) 
+		{
+			weapons [i].SetActive (false);
+		}
 
 		Bullet_Emitter = weapons [GameVariables.cur_weapon];
 
@@ -46,6 +52,9 @@ public class WeaponBase : MonoBehaviour
 		{
 			Switch ();
 		}
+
+		PickMeUp (gameObject.GetComponent<WeaponCharacteristic>());
+
 	}
 
 	#region : methods
@@ -79,10 +88,16 @@ public class WeaponBase : MonoBehaviour
 	{
 		int len = weapons.Length;
 
-		weapons[GameVariables.cur_weapon % len].SetActive (false);
-		weapons [(GameVariables.cur_weapon + 1) % len].SetActive (true);
-		GameVariables.cur_weapon += 1;
-		Bullet_Emitter = weapons [GameVariables.cur_weapon];
+		if (weapons [(GameVariables.cur_weapon + 1) % len].GetComponent<WeaponCharacteristic> ().GetPoses ()) {
+			weapons [GameVariables.cur_weapon % len].SetActive (false);
+			weapons [(GameVariables.cur_weapon + 1) % len].SetActive (true);
+			GameVariables.cur_weapon += 1;
+			Bullet_Emitter = weapons [GameVariables.cur_weapon];
+		} 
+		else 
+		{
+			return;
+		}
 	}
 
 	void PickMeUp( WeaponCharacteristic WC)
@@ -93,7 +108,6 @@ public class WeaponBase : MonoBehaviour
 			weapons [GameVariables.cur_weapon % weapons.Length].SetActive (false);
 			GameVariables.cur_weapon += 1;
 			WC.gameObject.SetActive (true);
-
 		}
 	}
 	#endregion
