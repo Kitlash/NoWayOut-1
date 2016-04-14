@@ -12,20 +12,18 @@ public class WeaponCharacteristic : MonoBehaviour
 	[SerializeField]
 	bool InMyPoses = false;
 
-	void Start () {
-	
+	void Start () 
+	{
+		gameObject.SetActive (IsActivated);
 	}
-	
+
 	// Update is called once per frame
 	void Update () 
 	{
-		/*while (!InMyPoses) 
+		if (gameObject.tag == "Weapon to pick up" && InMyPoses == true) 
 		{
-			gameObject.SetActive (false);
-		}*/
-
-		//IsActivated = Active;
-		//InMyPoses = GetPoses();
+			Destroy (gameObject);
+		}
 	}
 
 	public bool GetPoses()
@@ -36,17 +34,5 @@ public class WeaponCharacteristic : MonoBehaviour
 	public void SetPoses(bool value)
 	{
 			InMyPoses = value;
-	}
-
-	bool Active
-	{
-		get 
-		{
-			return IsActivated;
-		}
-		set
-		{
-			IsActivated = value;
-		}
 	}
 }

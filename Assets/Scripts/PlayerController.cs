@@ -130,15 +130,16 @@ public class PlayerController : MonoBehaviour
 	#region : PerformMove
     private void PerformMove()
     {
-        if (velocity != Vector3.zero)
-        {
-            rb.MovePosition(rb.position + velocity * Time.fixedDeltaTime);
+		if (velocity != Vector3.zero) {
+			rb.MovePosition (rb.position + velocity * Time.fixedDeltaTime);
 			anim.SetBool ("IsMoving", true);
 			Debug.Log ("Satus of IsMoving" + anim.GetBool ("IsMoving") + "");
-        }
-		anim.SetBool ("IsMoving", false);
-		Debug.Log ("Satus of IsMoving" + anim.GetBool ("IsMoving") + "");
-
+		} 
+		/*else 
+		{
+			anim.SetBool ("IsMoving", false);
+			Debug.Log ("Satus of IsMoving" + anim.GetBool ("IsMoving") + "");
+		}*/
     }
 	#endregion
 
