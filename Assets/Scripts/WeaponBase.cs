@@ -30,6 +30,8 @@ public class WeaponBase : MonoBehaviour
 		weapons [0].SetActive (true);
 
 		Bullet_Emitter = weapons [GameVariables.cur_weapon];
+
+		Debug.Log (Bullet_Emitter.name + "");
 	}
 	
 	// Update is called once per frame

@@ -134,10 +134,10 @@ public class PlayerController : MonoBehaviour
         {
             rb.MovePosition(rb.position + velocity * Time.fixedDeltaTime);
 			anim.SetBool ("IsMoving", true);
-			Debug.Log (anim.GetBool ("IsMoving") + "");
+			Debug.Log ("Satus of IsMoving" + anim.GetBool ("IsMoving") + "");
         }
 		anim.SetBool ("IsMoving", false);
-		Debug.Log (anim.GetBool ("IsMoving") + "");
+		Debug.Log ("Satus of IsMoving" + anim.GetBool ("IsMoving") + "");
 
     }
 	#endregion

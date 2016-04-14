@@ -80,12 +80,12 @@
     <Compile Include="Assets\Scripts\LevelEnd.cs" />
     <Compile Include="Assets\Scripts\MenuScript.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\RotatingItem.cs" />
     <Compile Include="Assets\Scripts\Tags Management.cs" />
     <Compile Include="Assets\Scripts\WeaponBase.cs" />
     <Compile Include="Assets\Scripts\WeaponCharacteristic.cs" />
     <Compile Include="Assets\Scripts\nbmunition.cs" />
-    <Compile Include="Assets\Scripts\playerHealth.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Decor\Bin\1st readme.txt" />
