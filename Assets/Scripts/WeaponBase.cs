@@ -53,7 +53,10 @@ public class WeaponBase : MonoBehaviour
 			Switch ();
 		}
 
-		PickMeUp (gameObject.GetComponent<WeaponCharacteristic>());
+		if (Input.GetKey(KeyCode.E)) 
+		{
+			PickMeUp (gameObject.GetComponent<WeaponCharacteristic> ());
+		}
 
 	}
 
@@ -88,7 +91,8 @@ public class WeaponBase : MonoBehaviour
 	{
 		int len = weapons.Length;
 
-		if (weapons [(GameVariables.cur_weapon + 1) % len].GetComponent<WeaponCharacteristic> ().GetPoses ()) {
+		if (weapons [(GameVariables.cur_weapon + 1) % len].GetComponent<WeaponCharacteristic> ().GetPoses ()) 
+		{
 			weapons [GameVariables.cur_weapon % len].SetActive (false);
 			weapons [(GameVariables.cur_weapon + 1) % len].SetActive (true);
 			GameVariables.cur_weapon += 1;
@@ -102,13 +106,19 @@ public class WeaponBase : MonoBehaviour
 
 	void PickMeUp( WeaponCharacteristic WC)
 	{
-		if ( WC.GetPoses() && WC.gameObject.tag == "Weapon to pick up" && Input.GetKey(KeyCode.E)) 
+		if ( WC.gameObject.tag == "Weapon to pick up" && Input.GetKey(KeyCode.E)) 
 		{
-			WC.SetPoses(true);
-			weapons [GameVariables.cur_weapon % weapons.Length].SetActive (false);
-			GameVariables.cur_weapon += 1;
-			WC.gameObject.SetActive (true);
+			WC.SetPoses(true); //Once InMyPoses set to true the oject on the scene is destroyed
+			weapons [GameVariables.cur_weapon % weapons.Length].SetActive (false); //The current gun you're using is disabble
+			foreach (GameObject w in weapons) 
+			{
+				if (w.name == WC.name) 
+				{
+					w.SetActive (true);
+				}
+			}
 		}
 	}
+
 	#endregion
 }

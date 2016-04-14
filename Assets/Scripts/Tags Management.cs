@@ -8,4 +8,5 @@ public class Tags : MonoBehaviour
 	public const string fader = "Fader";
     public const string gameController = "Game Controller";
 	public const string PickUp = "Pick Up";
+	public const string Weapon = "Weapon";
 }

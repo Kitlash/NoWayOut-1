@@ -135,11 +135,11 @@ public class PlayerController : MonoBehaviour
 			anim.SetBool ("IsMoving", true);
 			Debug.Log ("Satus of IsMoving" + anim.GetBool ("IsMoving") + "");
 		} 
-		else 
+		/*else 
 		{
 			anim.SetBool ("IsMoving", false);
 			Debug.Log ("Satus of IsMoving" + anim.GetBool ("IsMoving") + "");
-		}
+		}*/
     }
 	#endregion
 

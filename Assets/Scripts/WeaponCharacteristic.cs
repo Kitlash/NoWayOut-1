@@ -16,11 +16,14 @@ public class WeaponCharacteristic : MonoBehaviour
 	{
 		gameObject.SetActive (IsActivated);
 	}
-	
+
 	// Update is called once per frame
 	void Update () 
 	{
-		
+		if (gameObject.tag == "Weapon to pick up" && InMyPoses == true) 
+		{
+			Destroy (gameObject);
+		}
 	}
 
 	public bool GetPoses()
@@ -31,17 +34,5 @@ public class WeaponCharacteristic : MonoBehaviour
 	public void SetPoses(bool value)
 	{
 			InMyPoses = value;
-	}
-
-	bool Active
-	{
-		get 
-		{
-			return IsActivated;
-		}
-		set
-		{
-			IsActivated = value;
-		}
 	}
 }
