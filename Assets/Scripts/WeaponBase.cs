@@ -27,14 +27,6 @@ public class WeaponBase : MonoBehaviour
 
 		GameVariables.cur_weapon = 0;
 
-
-		weapons [0].SetActive (true);
-
-		for (int i = 1; i < weapons.Length; i++) 
-		{
-			weapons [i].SetActive (false);
-		}
-
 		Bullet_Emitter = weapons [GameVariables.cur_weapon];
 
 		Debug.Log (Bullet_Emitter.name + "");
@@ -51,11 +43,6 @@ public class WeaponBase : MonoBehaviour
 		if (Input.GetKey (KeyCode.Q)) 
 		{
 			Switch ();
-		}
-
-		if (Input.GetKey(KeyCode.E)) 
-		{
-			PickMeUp (gameObject.GetComponent<WeaponCharacteristic> ());
 		}
 
 	}
@@ -91,21 +78,37 @@ public class WeaponBase : MonoBehaviour
 	{
 		int len = weapons.Length;
 
-		if (weapons [(GameVariables.cur_weapon + 1) % len].GetComponent<WeaponCharacteristic> ().GetPoses ()) 
+		int i = (GameVariables.cur_weapon + 1) % len ;
+	
+		Debug.Log ("Current position in my array : " + GameVariables.cur_weapon);
+
+		while(i <= len - 1  && weapons [i].GetComponent<WeaponCharacteristic> ().GetPoses () == false)
 		{
-			weapons [GameVariables.cur_weapon % len].SetActive (false);
-			weapons [(GameVariables.cur_weapon + 1) % len].SetActive (true);
-			GameVariables.cur_weapon += 1;
+			Debug.Log ("range of i before increment : " + i);
+			i++;
+
+			if (i == len - 1 ) 
+			{
+				i = 0;
+			}
+		}
+
+		Debug.Log ("range of after while i : " + i);
+
+		if (i != GameVariables.cur_weapon) 
+		{
+			weapons [GameVariables.cur_weapon].SetActive (false);
+			weapons [i].SetActive (true);
+			GameVariables.cur_weapon = i;
+			Debug.Log ("Current position in my array after Switch : " + GameVariables.cur_weapon);
 			Bullet_Emitter = weapons [GameVariables.cur_weapon];
 		} 
-		else 
-		{
-			return;
-		}
 	}
 
-	void PickMeUp( WeaponCharacteristic WC)
+	void OnTriggerEnter( Collider collider)
 	{
+		WeaponCharacteristic WC = collider.gameObject.GetComponent<WeaponCharacteristic> ();
+
 		if ( WC.gameObject.tag == "Weapon to pick up" && Input.GetKey(KeyCode.E)) 
 		{
 			WC.SetPoses(true); //Once InMyPoses set to true the oject on the scene is destroyed
@@ -115,6 +118,7 @@ public class WeaponBase : MonoBehaviour
 				if (w.name == WC.name) 
 				{
 					w.SetActive (true);
+					w.GetComponent<WeaponCharacteristic> ().SetPoses (true);
 				}
 			}
 		}
