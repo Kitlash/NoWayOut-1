@@ -86,12 +86,13 @@ public class EnemySight : MonoBehaviour
 
     float CalculatePathLength(Vector3 targetPosition)
     {
-        NavMeshPath path = new NavMeshPath();
+        NavMeshPath path = nav.path;//new NavMeshPath();
 
-        if(nav.enabled)
-        {
-            nav.CalculatePath(targetPosition, path);
-        }
+        //if(nav.enabled)
+        //{
+        nav.CalculatePath(targetPosition, path);
+        //}
+        
 
         Vector3[] allWayPoints = new Vector3[path.corners.Length + 2];
         allWayPoints[0] = transform.position;

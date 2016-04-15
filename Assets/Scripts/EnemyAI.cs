@@ -16,7 +16,7 @@ public class EnemyAI : MonoBehaviour
     private LastPlayerSighting lastPlayerSighting;
     private float chaseTimer;
     private float patrolTimer;
-    private int wayPointIndex;
+    private int wayPointIndex =0;
 
 	// Use this for initialization
 	void Start ()
@@ -83,7 +83,7 @@ public class EnemyAI : MonoBehaviour
     void Patrolling()
     {
         nav.speed = patrolSpeed;
-        wayPointIndex = 0;
+        wayPointIndex %= 10;
 
         if (nav.destination == nav.nextPosition)
         {
