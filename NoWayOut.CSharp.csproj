@@ -70,7 +70,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\HashIDs.cs" />
-    <Compile Include="Assets\MP_animator.cs" />
     <Compile Include="Assets\Scripts\CameraMovement.cs" />
     <Compile Include="Assets\Scripts\Coin.cs" />
     <Compile Include="Assets\Scripts\EnemyAI.cs" />
@@ -88,6 +87,7 @@
     <Compile Include="Assets\Scripts\WeaponCharacteristic.cs" />
     <Compile Include="Assets\Scripts\nbmunition.cs" />
     <Compile Include="Assets\Scripts\playerHealth.cs" />
+    <Compile Include="Assets\multiPlayer\MP_animator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Decor\Bin\1st readme.txt" />
