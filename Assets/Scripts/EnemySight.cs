@@ -46,7 +46,6 @@ public class EnemySight : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        Debug.Log("bla");
         if(other.gameObject == player)
         {
             playerInSight = false;

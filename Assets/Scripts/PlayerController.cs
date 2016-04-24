@@ -23,7 +23,6 @@ public class PlayerController : MonoBehaviour
     Vector3 velocity = Vector3.zero;
     Vector3 rotation = Vector3.zero;
 
-
 	Animator anim;
 
 	#region : sprint stuff
