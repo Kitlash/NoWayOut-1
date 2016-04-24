@@ -16,6 +16,7 @@ public class EnemySight : MonoBehaviour
     
     //private Animator playerAnim;
 	private PlayerHealth playerHealth;
+    
 
     void Start()
     {
@@ -27,6 +28,7 @@ public class EnemySight : MonoBehaviour
         player = GameObject.FindGameObjectWithTag(Tags.player);
 		//playerAnim = player.GetComponent<Animator>(); // pourquoi t'as besoin de l'animator tu playor?
 		playerHealth = player.GetComponent<PlayerHealth> ();
+        
         
 		
         personalLastSighting = resetPosition;
