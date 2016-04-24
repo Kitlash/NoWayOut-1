@@ -110,5 +110,10 @@ public class PlayerHealth : MonoBehaviour
 
 	}
 	#endregion
+
+//	public float GetLife()
+//	{
+//			return health;
+//	}
 }
 
