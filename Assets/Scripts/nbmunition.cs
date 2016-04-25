@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class nbmunition : MonoBehaviour {
+public class nbmunition : MonoBehaviour 
+{
 
 	void OnTriggerEnter (Collider collider) 
 	{

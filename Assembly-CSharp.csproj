@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\LastPlayerSighting.cs" />
      <Compile Include="Assets\Scripts\LevelEnd.cs" />
      <Compile Include="Assets\Scripts\MenuScript.cs" />
+     <Compile Include="Assets\Scripts\OpponentLife.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PlayerHealth.cs" />
      <Compile Include="Assets\Scripts\RotatingItem.cs" />
@@ -65,6 +66,7 @@
      <Compile Include="Assets\Scripts\WeaponBase.cs" />
      <Compile Include="Assets\Scripts\WeaponCharacteristic.cs" />
      <Compile Include="Assets\Scripts\nbmunition.cs" />
+     <Compile Include="Assets\multiPlayer\MP_animator.cs" />
      <None Include="Assets\Decor\Bin\1st readme.txt" />
      <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
      <None Include="Assets\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />
