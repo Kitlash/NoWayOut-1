@@ -5,7 +5,7 @@ public class CameraMovement : MonoBehaviour {
 
     [SerializeField]
 	private float speed = 2.0f;
-	private float zoomSpeed = 2.0f;
+	//private float zoomSpeed = 2.0f;
     private float nSpeed;
     float maxSpeed;
 
