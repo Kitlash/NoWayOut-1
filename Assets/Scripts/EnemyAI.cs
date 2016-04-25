@@ -18,6 +18,8 @@ public class EnemyAI : MonoBehaviour
     private float patrolTimer;
     private int wayPointIndex =0;
 
+    private EnemyShooting enemyShooting;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -26,6 +28,7 @@ public class EnemyAI : MonoBehaviour
 		player = GameObject.FindGameObjectWithTag (Tags.player).transform;
 		playerHealth = player.GetComponent<PlayerHealth> ();
 		lastPlayerSighting = GetComponent<LastPlayerSighting> ();
+        enemyShooting = GetComponent<EnemyShooting>();
 	}
 	
 	// Update is called once per frame
@@ -53,6 +56,7 @@ public class EnemyAI : MonoBehaviour
     void Shooting()
     {
         nav.Stop();
+        
         Debug.Log("shot");
     }
 
