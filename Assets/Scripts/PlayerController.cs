@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
 
 		#region : Camera rotation
         float movY = Input.GetAxisRaw("Mouse X");
-        Vector3 rot = new Vector3(0f, movY, 0f) * mouseSensivity;
+		Vector3 rot = new Vector3(0f, movY, 0f)* mouseSensivity;
 
         rotation = rot;
 
@@ -129,8 +129,9 @@ public class PlayerController : MonoBehaviour
 	#region : PerformMove
     private void PerformMove()
     {
-		if (velocity != Vector3.zero) {
-			rb.MovePosition (rb.position + velocity * Time.fixedDeltaTime);
+		if (velocity != Vector3.zero) 
+		{
+			rb.MovePosition (rb.position + velocity  * Time.fixedDeltaTime);
 			anim.SetBool ("IsMoving", true);
 			//Debug.Log ("Satus of IsMoving : " + anim.GetBool ("IsMoving") + "");
 		} 

@@ -18,6 +18,7 @@ public class WeaponBase : MonoBehaviour
 	[SerializeField]
 	GameObject[] weapons = new GameObject[4];
 
+
 	#endregion
 
 	// Use this for initialization
@@ -49,7 +50,7 @@ public class WeaponBase : MonoBehaviour
 
 	#region : methods
 
-	void Shoot()
+	void Shoot ()
 	{
 		//Reduction of your number of munitions currently available
 		GameVariables.nbmunition--;
@@ -67,7 +68,7 @@ public class WeaponBase : MonoBehaviour
 		Temporary_RigidBody = Temporary_Bullet_Handler.GetComponent<Rigidbody> ();
 
 		//Tell the bullet to be "pushed" forward by an amount set by Bullet_Forward_Force. 
-		Temporary_RigidBody.AddForce (transform.forward * Bullet_Forward_Force);
+		Temporary_RigidBody.AddForce(transform.forward * Bullet_Forward_Force);
 
 		//Basic Clean Up, set the Bullets to self destruct
 		Destroy (Temporary_Bullet_Handler, 3.0f);
