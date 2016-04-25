@@ -48,6 +48,7 @@
      <Compile Include="Assets\HashIDs.cs" />
      <Compile Include="Assets\Scripts\AnimatorSetup.cs" />
      <Compile Include="Assets\Scripts\CameraMovement.cs" />
+     <Compile Include="Assets\Scripts\CheckPoint.cs" />
      <Compile Include="Assets\Scripts\Coin.cs" />
      <Compile Include="Assets\Scripts\EnemyAI.cs" />
      <Compile Include="Assets\Scripts\EnemyAnimation.cs" />
@@ -62,6 +63,7 @@
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PlayerHealth.cs" />
      <Compile Include="Assets\Scripts\RotatingItem.cs" />
+     <Compile Include="Assets\Scripts\SaveSystem.cs" />
      <Compile Include="Assets\Scripts\Tags Management.cs" />
      <Compile Include="Assets\Scripts\WeaponBase.cs" />
      <Compile Include="Assets\Scripts\WeaponCharacteristic.cs" />
