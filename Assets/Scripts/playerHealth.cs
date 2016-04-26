@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -37,8 +38,8 @@ public class PlayerHealth : MonoBehaviour
        
 		playerMovement = GetComponent<PlayerController>();
        
-        sceneFadeInOut = GameObject.FindGameObjectWithTag(Tags.fader).GetComponent<SceneFadeInOut>();
-        lastPlayerSighting = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<LastPlayerSighting>();
+        //sceneFadeInOut = GameObject.FindGameObjectWithTag(Tags.fader).GetComponent<SceneFadeInOut>();
+        //lastPlayerSighting = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<LastPlayerSighting>();
     }
 
 
@@ -88,7 +89,6 @@ public class PlayerHealth : MonoBehaviour
             // ... reset the level.
             sceneFadeInOut.EndScene();
     }
-
 
     public void TakeDamage(float amount)
     {

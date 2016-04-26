@@ -70,19 +70,19 @@ public class PlayerController : MonoBehaviour
 		if (Input.GetKey (KeyCode.LeftShift)) 
 		{
 			_sprintcoeff = sprintCoeff;
-			anim.SetBool("IsRunning", true);
+			//anim.SetBool("IsRunning", true);
 			stamina -= Time.deltaTime;
 			if (stamina < 0) {
 				stamina = 0;
 				_sprintcoeff = 1f;
-				anim.SetBool("IsRunning", false);
+				//anim.SetBool("IsRunning", false);
 			}
 			
 		} 
 		else 
 		{
 			_sprintcoeff = 1f;
-			anim.SetBool("IsRunning", false);
+			//anim.SetBool("IsRunning", false);
 			if (stamina < MaxStamina)
 				stamina += Time.deltaTime;
 		}
@@ -107,12 +107,12 @@ public class PlayerController : MonoBehaviour
         float _jump;
         if (Input.GetButton("Jump"))
         {
-			anim.SetBool("IsJumping", true);
+			//anim.SetBool("IsJumping", true);
             _jump = jumpForce;
         }
         else
         {
-			anim.SetBool("IsJumping", false);
+			//anim.SetBool("IsJumping", false);
             _jump = 0f;
         }
 

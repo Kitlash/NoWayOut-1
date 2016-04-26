@@ -28,7 +28,7 @@ public class EnemyShooting : MonoBehaviour
 		col = GetComponent<SphereCollider> ();
 		player = GameObject.FindGameObjectWithTag(Tags.player).transform;
 		playerHealth = player.gameObject.GetComponent<PlayerHealth> ();
-        hash = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<HashIDs>();
+        //hash = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<HashIDs>();
 
         laserShotLine.enabled = false;
         laserShotLight.intensity = 0f;
@@ -39,7 +39,8 @@ public class EnemyShooting : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-        float shot = anim.GetFloat(hash.shotFloat);
+        //float shot = anim.GetFloat(hash.shotFloat);
+        float shot = anim.GetFloat("Shot");
 
         if (shot > 0.5f && !shooting)
             Shoot();
@@ -51,7 +52,6 @@ public class EnemyShooting : MonoBehaviour
         }
 
         laserShotLight.intensity = Mathf.Lerp(laserShotLight.intensity, 0f, fadeSpeed * Time.deltaTime);
-	
 	}
 
     void OnAnimatorIK(int layerIndex)
@@ -74,7 +74,6 @@ public class EnemyShooting : MonoBehaviour
         playerHealth.TakeDamage(damage);
 
         ShotEffects();
-
     }
 
     void ShotEffects()

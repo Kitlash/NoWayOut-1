@@ -8,6 +8,7 @@ public class MenuScript : MonoBehaviour {
     public Canvas QuitMenu;
     public Button startText;
     public Button exitText;
+	//public Button loadText;
 
 	// Use this for initialization
 	void Start ()
@@ -15,6 +16,7 @@ public class MenuScript : MonoBehaviour {
         QuitMenu = QuitMenu.GetComponent<Canvas>();
         startText = startText.GetComponent<Button>();
         exitText = exitText.GetComponent<Button>();
+		//loadText = loadText.GetComponent<Button> ();
         QuitMenu.enabled = false;
 	}
 	public void exitPress ()
@@ -37,4 +39,10 @@ public class MenuScript : MonoBehaviour {
     {
         Application.Quit();
     }
+
+//	public void loadGame()
+//	{
+//		SceneManager.LoadScene ("project");
+//		SaveAndLoad.Load ();
+//	}
 }
