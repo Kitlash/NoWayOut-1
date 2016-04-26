@@ -6,13 +6,12 @@ public class OpponentLife : MonoBehaviour
 	[SerializeField]
 	float health = 100f;
 
-	float OnTriggerEnter(Collider collider)
+	void OnTriggerEnter(Collider collider)
 	{
 		if (collider.gameObject.name == "Bullet") 
 		{
-			health -= gameObject.GetComponent<WeaponBase> ().damage;
+			health -= gameObject.GetComponent<WeaponBase> ().cur_damage;
 		}
-		return health;
 	}
 
 	void Update()
@@ -22,5 +21,4 @@ public class OpponentLife : MonoBehaviour
 			Destroy (gameObject);
 		}
 	}
-
 }

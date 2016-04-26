@@ -4,7 +4,7 @@ using System.Collections;
 public class WeaponBase : MonoBehaviour 
 {
 	#region : Weapons attributs
-	public float damage;
+	public float cur_damage;
 
 	[SerializeField]
 	public GameObject Bullet_Emitter;
@@ -30,12 +30,16 @@ public class WeaponBase : MonoBehaviour
 
 		Bullet_Emitter = weapons [GameVariables.cur_weapon];
 
+		cur_damage = weapons [GameVariables.cur_weapon].GetComponent<WeaponCharacteristic> ().damage;
+
 		Debug.Log (Bullet_Emitter.name + "");
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
+		cur_damage = weapons [GameVariables.cur_weapon].GetComponent<WeaponCharacteristic> ().damage;
+
 		if (Input.GetMouseButtonDown (0) && GameVariables.nbmunition > 0) 
 		{
 			Shoot ();

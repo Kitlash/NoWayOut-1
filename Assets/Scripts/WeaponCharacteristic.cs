@@ -4,7 +4,7 @@ using System.Collections;
 public class WeaponCharacteristic : MonoBehaviour 
 {
 	[SerializeField]
-	float damage;
+	public float damage;
 
 	[SerializeField]
 	bool IsActivated;

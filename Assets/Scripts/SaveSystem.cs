@@ -3,36 +3,34 @@ using System.Collections;
 
 public class SaveSystem : MonoBehaviour 
 {
-	bool CPactive = false;
+	float cur_health;
 
 	void Start()
 	{
-		PlayerPrefs.SetFloat ("StartPosX", transform.position.x);
-		PlayerPrefs.SetFloat ("StartPosY", transform.position.y);
-		PlayerPrefs.SetFloat ("StartPosZ", transform.position.z);
+		PlayerPrefs.SetFloat ("PosX", transform.position.x);
+		PlayerPrefs.SetFloat ("PosY", transform.position.y);
+		PlayerPrefs.SetFloat ("PosZ", transform.position.z);
 
-		PlayerPrefs.SetFloat ("StartRotX", transform.eulerAngles.x);
-		PlayerPrefs.SetFloat ("StartRotX", transform.eulerAngles.y);
-		PlayerPrefs.SetFloat ("StartRotX", transform.eulerAngles.z);
+		PlayerPrefs.SetFloat ("Rotx", transform.eulerAngles.x);
+		PlayerPrefs.SetFloat ("RotY", transform.eulerAngles.y);
+		PlayerPrefs.SetFloat ("RotZ", transform.eulerAngles.z);
 
+		PlayerPrefs.SetFloat ("Life", 100f);
+	
 	}
 
-	void Update()
+	void Update () 
 	{
-		if (CPactive && gameObject.GetComponent<PlayerHealth> ().health <= 0)
+		cur_health = gameObject.GetComponent<PlayerHealth> ().health;
+
+		if ( cur_health <= 0) 
 		{
 			Load ();
 		}
-		else if ( !CPactive && gameObject.GetComponent<PlayerHealth>().health <= 0)
-		{
-			transform.position = new Vector3 (PlayerPrefs.GetFloat ("StartPosX"), PlayerPrefs.GetFloat ("StartPosY"), PlayerPrefs.GetFloat ("StartPosZ"));
-			transform.rotation = Quaternion.Euler (PlayerPrefs.GetFloat ("StartRotX"), PlayerPrefs.GetFloat ("StartRotY"), PlayerPrefs.GetFloat ("StartRotZ"));
-			gameObject.GetComponent<PlayerHealth> ().health = 100f;
-		
-		}
+	
 	}
 
-	public void Load()
+ 	void Load()
 	{
 		float x = PlayerPrefs.GetFloat ("PosX");
 		float y = PlayerPrefs.GetFloat ("PosY");
@@ -42,14 +40,15 @@ public class SaveSystem : MonoBehaviour
 		float ry = PlayerPrefs.GetFloat ("RotY");
 		float rz = PlayerPrefs.GetFloat ("RotZ");
 
-		gameObject.GetComponent<PlayerHealth> ().health = PlayerPrefs.GetFloat ("Life")  * 4 / 3;
+		if (cur_health < 77f) 
+		{
+			cur_health = PlayerPrefs.GetFloat ("Life") + 33f;
+		}
+
+        cur_health = PlayerPrefs.GetFloat("Life");
 
 		transform.position = new Vector3 (x, y, z);
 		transform.rotation = Quaternion.Euler (rx, ry, rz);
 	}
 
-	public void SetCP(bool value)
-	{
-		CPactive = value;
-	}
 }
