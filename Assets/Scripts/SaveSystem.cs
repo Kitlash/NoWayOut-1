@@ -43,9 +43,9 @@ public class SaveSystem : MonoBehaviour
 		if (cur_health < 77f) 
 		{
 			cur_health = PlayerPrefs.GetFloat ("Life") + 33f;
-		}	
+		}
 
-		cur_health = PlayerPrefs.GetFloat("Life")
+        cur_health = PlayerPrefs.GetFloat("Life");
 
 		transform.position = new Vector3 (x, y, z);
 		transform.rotation = Quaternion.Euler (rx, ry, rz);

@@ -10,8 +10,8 @@ public class EnemyLife : MonoBehaviour {
 	{
 		if (collider.gameObject.name == "Bullet")
 		{
-			health -= gameObject.GetComponent<WeaponBase> ().damage;
-		}
+            health -= gameObject.GetComponent<WeaponBase>().cur_damage; //Edited to prevent compile error -> health -= gameObject.GetComponent<WeaponBase>().damage; 
+        }
 	}
 
 	void Update ()
