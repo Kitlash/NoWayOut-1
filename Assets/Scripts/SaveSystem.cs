@@ -1,28 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-<<<<<<< HEAD
-public class SaveSystem : MonoBehaviour {
-
-	float cur_health;
-
-	void Start () 
-=======
 public class SaveSystem : MonoBehaviour 
 {
-<<<<<<< HEAD
-	private bool CPactive = false;
-
 	float cur_health;
 
 	void Start()
->>>>>>> 81713441cbf51c30eab590967b47120631f32300
 	{
 		PlayerPrefs.SetFloat ("PosX", transform.position.x);
 		PlayerPrefs.SetFloat ("PosY", transform.position.y);
 		PlayerPrefs.SetFloat ("PosZ", transform.position.z);
 
-<<<<<<< HEAD
 		PlayerPrefs.SetFloat ("Rotx", transform.eulerAngles.x);
 		PlayerPrefs.SetFloat ("RotY", transform.eulerAngles.y);
 		PlayerPrefs.SetFloat ("RotZ", transform.eulerAngles.z);
@@ -42,60 +30,7 @@ public class SaveSystem : MonoBehaviour
 	
 	}
 
-	void Load()
-=======
-		PlayerPrefs.SetFloat ("RotX", transform.eulerAngles.x);
-		PlayerPrefs.SetFloat ("RotY", transform.eulerAngles.y);
-		PlayerPrefs.SetFloat ("RotZ", transform.eulerAngles.z);
-
-		PlayerPrefs.SetFloat ("Life", gameObject.GetComponent<PlayerHealth>().health);
-
-		Debug.Log (CPactive + "");
-=======
-	bool CPactive = false;
-
-	void Start()
-	{
-		PlayerPrefs.SetFloat ("StartPosX", transform.position.x);
-		PlayerPrefs.SetFloat ("StartPosY", transform.position.y);
-		PlayerPrefs.SetFloat ("StartPosZ", transform.position.z);
-
-		PlayerPrefs.SetFloat ("StartRotX", transform.eulerAngles.x);
-		PlayerPrefs.SetFloat ("StartRotX", transform.eulerAngles.y);
-		PlayerPrefs.SetFloat ("StartRotX", transform.eulerAngles.z);
-
->>>>>>> 9de4efbfa21337a1c1c4106fdc187627e752da3b
-	}
-
-	void Update()
-	{
-<<<<<<< HEAD
-		cur_health = gameObject.GetComponent<PlayerHealth> ().health;
-
-		if (cur_health <= 0)
-		{
-			Load ();
-		}
-	}
-
-	void Load()
-=======
-		if (CPactive && gameObject.GetComponent<PlayerHealth> ().health <= 0)
-		{
-			Load ();
-		}
-		else if ( !CPactive && gameObject.GetComponent<PlayerHealth>().health <= 0)
-		{
-			transform.position = new Vector3 (PlayerPrefs.GetFloat ("StartPosX"), PlayerPrefs.GetFloat ("StartPosY"), PlayerPrefs.GetFloat ("StartPosZ"));
-			transform.rotation = Quaternion.Euler (PlayerPrefs.GetFloat ("StartRotX"), PlayerPrefs.GetFloat ("StartRotY"), PlayerPrefs.GetFloat ("StartRotZ"));
-			gameObject.GetComponent<PlayerHealth> ().health = 100f;
-		
-		}
-	}
-
-	public void Load()
->>>>>>> 9de4efbfa21337a1c1c4106fdc187627e752da3b
->>>>>>> 81713441cbf51c30eab590967b47120631f32300
+ 	void Load()
 	{
 		float x = PlayerPrefs.GetFloat ("PosX");
 		float y = PlayerPrefs.GetFloat ("PosY");
@@ -105,34 +40,15 @@ public class SaveSystem : MonoBehaviour
 		float ry = PlayerPrefs.GetFloat ("RotY");
 		float rz = PlayerPrefs.GetFloat ("RotZ");
 
-<<<<<<< HEAD
-		transform.position = new Vector3 (x, y, z);
-		transform.rotation = Quaternion.Euler (rx, ry, rz);
-
-		if (PlayerPrefs.GetFloat ("Life") < 77f) 
+		if (cur_health < 77f) 
 		{
-			gameObject.GetComponent<PlayerHealth> ().health = PlayerPrefs.GetFloat ("Life") + 33f; 
-		}
+			cur_health = PlayerPrefs.GetFloat ("Life") + 33f;
+		}	
 
-		gameObject.GetComponent<PlayerHealth> ().health = PlayerPrefs.GetFloat ("Life"); 
-	}
-=======
-<<<<<<< HEAD
-		cur_health = PlayerPrefs.GetFloat ("Life") + cur_health * 1/3;
-=======
-		gameObject.GetComponent<PlayerHealth> ().health = PlayerPrefs.GetFloat ("Life")  * 4 / 3;
->>>>>>> 9de4efbfa21337a1c1c4106fdc187627e752da3b
+		cur_health = PlayerPrefs.GetFloat("Life")
 
 		transform.position = new Vector3 (x, y, z);
 		transform.rotation = Quaternion.Euler (rx, ry, rz);
 	}
-<<<<<<< HEAD
-=======
 
-	public void SetCP(bool value)
-	{
-		CPactive = value;
-	}
->>>>>>> 9de4efbfa21337a1c1c4106fdc187627e752da3b
->>>>>>> 81713441cbf51c30eab590967b47120631f32300
 }
