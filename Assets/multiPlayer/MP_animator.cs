@@ -4,8 +4,8 @@ using System.Collections;
 public class MP_animator : MonoBehaviour
 {
     Animator anim;
-    public float v; //Vertical
-    public float h; //Horizontal
+    public float walk; //Vertical
+    public float turn; //Horizontal
     public float sprint; // Sprint
                   // Use this for initialization
     void Start()
@@ -16,14 +16,14 @@ public class MP_animator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        v = Input.GetAxis("Vertical");
-        h = Input.GetAxis("Horizontal");
+        walk = Input.GetAxis("Vertical");
+        turn = Input.GetAxis("Horizontal");
         Sprinting();
     }
     void FixedUpdate()
     {
-        anim.SetFloat("Walk", v);
-        anim.SetFloat("Turn", h);
+        anim.SetFloat("Walk", walk);
+        anim.SetFloat("Turn", turn);
         anim.SetFloat("Sprint", sprint);
     }
     void Sprinting()
