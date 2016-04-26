@@ -21,12 +21,14 @@ public class SaveSystem : MonoBehaviour
 
 	void Update () 
 	{
-		cur_health = gameObject.GetComponent<PlayerHealth> ().health;
+        //You mayneedto fix PlayerHealth first
+
+		/*cur_health = gameObject.GetComponent<PlayerHealth> ().health;
 
 		if ( cur_health <= 0) 
 		{
 			Load ();
-		}
+		}*/
 	
 	}
 

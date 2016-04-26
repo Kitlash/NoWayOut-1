@@ -67,7 +67,10 @@ public class EnemySight : MonoBehaviour
                     {
                         playerInSight = true;
                         Debug.Log("in sight");
-                        
+
+                        //Animation shoot
+
+                        playerHealth.TakeDamage(20);
                     }
                 }
             }

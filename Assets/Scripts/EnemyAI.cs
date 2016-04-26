@@ -58,6 +58,8 @@ public class EnemyAI : MonoBehaviour
         nav.Stop();
         
         Debug.Log("shot");
+
+
     }
 
     void Chasing()
