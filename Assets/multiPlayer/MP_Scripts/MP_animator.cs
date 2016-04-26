@@ -28,7 +28,7 @@ public class MP_animator : MonoBehaviour
     }
     void Sprinting()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             sprint = 0.2f;
         }
