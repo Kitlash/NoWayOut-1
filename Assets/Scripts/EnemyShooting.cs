@@ -36,23 +36,23 @@ public class EnemyShooting : MonoBehaviour
 		scaledDamage = maximumDamage - minimumDamage;
 	}
 	
-	// Update is called once per frame
-	void Update () 
-	{
-        float shot = anim.GetFloat(hash.shotFloat);
-
-        if (shot > 0.5f && !shooting)
-            Shoot();
-
-        if (shot < 0.5f)
-        {
-            shooting = false;
-            laserShotLine.enabled = false;
-        }
-
-        laserShotLight.intensity = Mathf.Lerp(laserShotLight.intensity, 0f, fadeSpeed * Time.deltaTime);
-	
-	}
+//	// Update is called once per frame
+//	void Update () 
+//	{
+//        float shot = anim.GetFloat(hash.shotFloat);
+//
+//        if (shot > 0.5f && !shooting)
+//            Shoot();
+//
+//        if (shot < 0.5f)
+//        {
+//            shooting = false;
+//            laserShotLine.enabled = false;
+//        }
+//
+//        laserShotLight.intensity = Mathf.Lerp(laserShotLight.intensity, 0f, fadeSpeed * Time.deltaTime);
+//	
+//	}
 
     void OnAnimatorIK(int layerIndex)
     {
