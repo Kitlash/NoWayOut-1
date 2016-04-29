@@ -10,6 +10,7 @@ public class EnemyAI : MonoBehaviour
     public Transform[] patrolWayPoints;
     public float flashIntensity = 3f;
     public float fadeSpeed = 10f;
+    public GameObject bulletPrefab;
 
     private LineRenderer laserShotLine;
     private Light laserShotLight;
@@ -22,6 +23,7 @@ public class EnemyAI : MonoBehaviour
     private float patrolTimer;
     private int wayPointIndex =0;
     private Animator anim;
+    private float nextFire;
 
     private EnemyShooting enemyShooting;
 
@@ -38,6 +40,8 @@ public class EnemyAI : MonoBehaviour
         enemyShooting = GetComponent<EnemyShooting>();
         anim = GetComponent<Animator>();
         anim.Play("Idle");
+
+        nextFire = Time.time;
 
         laserShotLine.enabled = false;
         laserShotLight.intensity = 0f;
@@ -69,21 +73,32 @@ public class EnemyAI : MonoBehaviour
 
     void Shooting()
     {
+        if (nextFire > Time.time)
+            return;
+
         nav.Stop();
         playerHealth.TakeDamage(5);
         anim.Play("Shooting");
-        laserShotLine.SetPosition(0, laserShotLine.transform.position);
+        //laserShotLine.SetPosition(0, laserShotLine.transform.position);
 
         // Set the end position of the player's centre of mass.
-        laserShotLine.SetPosition(1, player.position + Vector3.up * 1.5f);
+        //laserShotLine.SetPosition(1, player.position + Vector3.up * 1.5f);
 
-        if (anim.GetFloat("Shot") > 0.5f)
-            laserShotLine.enabled = true;
+        GameObject bullet = (GameObject)Instantiate(bulletPrefab, transform.position + new Vector3(0, 1.8f, 0), transform.rotation);
+        bullet.name = bulletPrefab.name;
+
+        Destroy(bullet, 2f);
+
+        //bullet.GetComponent<Rigidbody>().AddForce(transform.TransformDirection(Vector3.forward)* 100);
+
+        //if (anim.GetFloat("Shot") > 0.5f)
+        //    laserShotLine.enabled = true;
 
         // Make the light flash.
         laserShotLight.intensity = flashIntensity;
         Debug.Log("shot");
 
+        nextFire = Time.time + 1;
 
     }
 
@@ -115,7 +130,7 @@ public class EnemyAI : MonoBehaviour
     {
         anim.Play("isWalking");
         nav.speed = patrolSpeed;
-        wayPointIndex %= 10;
+        wayPointIndex %= patrolWayPoints.Length;
 
         if (nav.destination == nav.nextPosition)
         {
