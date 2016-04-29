@@ -31,6 +31,7 @@ public class MenuScript : MonoBehaviour {
         chooseMode.enabled = false;
         soloCanvas.enabled = false;
         Settings.enabled = false;
+		LanguageCan.enabled = false;
     }
     public void ChooseMode() // Choose mode menu
     {
