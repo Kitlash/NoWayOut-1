@@ -130,7 +130,7 @@ public class EnemyAI : MonoBehaviour
     {
         anim.Play("isWalking");
         nav.speed = patrolSpeed;
-        wayPointIndex %= patrolWayPoints.Length;
+        wayPointIndex %= (patrolWayPoints.Length - 1);
 
         if (nav.destination == nav.nextPosition)
         {
