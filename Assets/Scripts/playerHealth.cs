@@ -16,7 +16,8 @@ public class PlayerHealth : MonoBehaviour
     private SceneFadeInOut sceneFadeInOut;              // Reference to the SceneFadeInOut script.
     private LastPlayerSighting lastPlayerSighting;      // Reference to the LastPlayerSighting script.
     private float timer;                                // A timer for counting to the reset of the level once the player is dead.
-    private bool deadYesOrNo;                            // A bool to show if the player is dead or not.
+    private bool deadYesOrNo;// A bool to show if the player is dead or not.
+    private Animator anim;
 
 	#region : life bar attributs
 	[SerializeField]
@@ -33,6 +34,7 @@ public class PlayerHealth : MonoBehaviour
 		healthTexture = new Texture2D (1, 1);
 		healthTexture.SetPixel (0, 0, Color.red);
 		healthTexture.Apply ();
+        anim = GetComponent<Animator>();
 	}
 
     void Awake()
@@ -103,6 +105,16 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(float amount)
     {
         health -= amount;
+        
+
+        if (health == 0)
+        {
+            anim.Play("dead");           
+            SceneManager.LoadScene("project");
+            
+        }
+            
+        
     }
 
 	#region : life bar function

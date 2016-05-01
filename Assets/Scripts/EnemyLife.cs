@@ -15,26 +15,33 @@ public class EnemyLife : MonoBehaviour
 	[SerializeField]
 	float interval;
 
+    public WeaponBase weaponBase;
+
 	void Start () 
 	{
-		if (life <= 0) 
-		{
-			Destroy (gameObject, interval);
-			life = maxlife;
-		}
+        weaponBase = GameObject.FindGameObjectWithTag(Tags.player).GetComponent<WeaponBase>();
 	}
 
 	void OnTriggerEnter(Collider collider)
 	{
-		if (collider.gameObject.tag == " Bullet") 
+        Debug.Log("enter");
+		if (collider.gameObject == weaponBase.Bullet) 
 		{
-			damage = GetComponent<WeaponBase> ().cur_damage;
+            Debug.Log("damage");
+			damage = weaponBase.cur_damage;
 			life -= damage;
+            
 		}
 	}
 
 	// Update is called once per frame
-	void Update () {
-	
-	}
+	void Update ()
+    {
+        if (life <= 0)
+        {
+            Debug.Log("Dead");
+            Destroy(gameObject, interval);
+            life = maxlife;
+        }
+    }
 }
