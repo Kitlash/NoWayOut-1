@@ -1,0 +1,9 @@
+*.csproj
+Library
+obj
+Temp
+*.userprefs
+*.suo
+*.tmp
+*.user
+*.sln
