@@ -7,6 +7,7 @@ public class EnemySight : MonoBehaviour
     public bool playerInSight;
     public Vector3 personalLastSighting;
 
+    
     private GameObject player;
     private NavMeshAgent nav;
     private Vector3 previousSighting;
@@ -63,11 +64,15 @@ public class EnemySight : MonoBehaviour
 
                 if(Physics.Raycast(transform.position + transform.up, direction.normalized, out hit, col.radius))
                 {
+                    Debug.Log("youhou");
                     if(hit.collider.gameObject == player)
                     {
                         playerInSight = true;
                         Debug.Log("in sight");
-                        
+
+                        //Animation shoot
+
+                        //playerHealth.TakeDamage(20);
                     }
                 }
             }
