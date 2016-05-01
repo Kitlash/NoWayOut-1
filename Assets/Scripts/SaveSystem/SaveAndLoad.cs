@@ -54,16 +54,24 @@ public class SaveAndLoad : MonoBehaviour
 
 	public void Load()
 	{
+		Debug.Log ("Load state 1");
+
 		if (File.Exists (Application.persistentDataPath + "savefile.dat")) 
 		{
+			Debug.Log ("State 2");
+
 			BinaryFormatter binform = new BinaryFormatter ();
 
 			FileStream fstream = File.Open (Application.persistentDataPath + "savefile.dat", FileMode.Open);
 			List<WeaponBase.SerializableWeaponCharacteristics> saved_weapons = (List<WeaponBase.SerializableWeaponCharacteristics> )binform.Deserialize (fstream);
 			fstream.Close ();
 
+			Debug.Log ("State 3");
+
 			GetComponent<WeaponBase> ().save_weapons = saved_weapons;
 			GetComponent<WeaponBase>().OnAfterDeserialize ();
+
+			Debug.Log ("State 4");
 
 			LoadPlayerPrefs ();
 

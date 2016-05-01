@@ -1,10 +1,11 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Weapons/WeaponBase.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/SaveSystem/CheckPoint.cs">
     <Files>
-      <File FileName="Assets/Scripts/Weapons/WeaponBase.cs" Line="47" Column="2" />
+      <File FileName="Assets/Scripts/Weapons/WeaponBase.cs" Line="121" Column="1" />
       <File FileName="Assets/Scripts/Weapons/WeaponCharacteristic.cs" Line="24" Column="37" />
-      <File FileName="Assets/Scripts/SaveSystem/CheckPoint.cs" Line="14" Column="4" />
+      <File FileName="Assets/Scripts/SaveSystem/CheckPoint.cs" Line="15" Column="49" />
+      <File FileName="Assets/Scripts/SaveSystem/SaveAndLoad.cs" Line="132" Column="44" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
