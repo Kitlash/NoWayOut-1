@@ -13,6 +13,7 @@ public class MenuScript : MonoBehaviour {
     public Button exitText;
     public Canvas Settings;
     public Canvas LanguageCan;
+    public AudioSource mabite;
 	//public Button loadText;
 
 	// Use this for initialization
@@ -31,10 +32,14 @@ public class MenuScript : MonoBehaviour {
         chooseMode.enabled = false;
         soloCanvas.enabled = false;
         Settings.enabled = false;
+        //LanguageCan.enabled = false;
 		LanguageCan.enabled = false;
+        mabite.enabled = false;
     }
     public void ChooseMode() // Choose mode menu
     {
+        mabite.enabled = true;
+        mabite.Play();
         chooseMode.enabled = true;
         playText.enabled = false;
         soloCanvas.enabled = false;
@@ -56,6 +61,7 @@ public class MenuScript : MonoBehaviour {
     }
     public void soloCan()
     {
+        mabite.Play();
         chooseMode.enabled = false;
         playText.enabled = false;
         soloCanvas.enabled = true;
@@ -76,6 +82,7 @@ public class MenuScript : MonoBehaviour {
     }
     public void exitPress () // Quit menu
     {
+        mabite.Play();
         chooseMode.enabled = false;
         playText.enabled = false;
         soloCanvas.enabled = false;
@@ -95,6 +102,8 @@ public class MenuScript : MonoBehaviour {
     }
     public void SettingsCan()
     {
+        mabite.enabled = true;
+        mabite.Play();
         chooseMode.enabled = false;
         playText.enabled = false;
         soloCanvas.enabled = false;
@@ -104,7 +113,7 @@ public class MenuScript : MonoBehaviour {
         LanguageCan.enabled = false;
     }
     public void LangCan()
-    {
+    {   
         chooseMode.enabled = false;
         playText.enabled = false;
         soloCanvas.enabled = false;
@@ -125,10 +134,12 @@ public class MenuScript : MonoBehaviour {
     }
     public void startLevel() // new Canvas -> Button New Game
     {
+        mabite.Play();
         SceneManager.LoadScene("project");
     }
     public void startMulti() // Button multi
     {
+        mabite.Play();
         SceneManager.LoadScene("multiPlayer");
     }
     public void exitGame() // QuitGame -> Button Yes
