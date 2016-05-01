@@ -54,7 +54,7 @@ public class EnemyAI : MonoBehaviour
 
         if (enemySight.playerInSight)
         {
-            Debug.Log("shooting");
+            
             Shooting();
         }
 
@@ -96,7 +96,7 @@ public class EnemyAI : MonoBehaviour
 
         // Make the light flash.
         laserShotLight.intensity = flashIntensity;
-        Debug.Log("shot");
+        
 
         nextFire = Time.time + 1;
 

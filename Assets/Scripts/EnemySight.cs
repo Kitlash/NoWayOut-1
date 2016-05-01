@@ -52,7 +52,7 @@ public class EnemySight : MonoBehaviour
         if(other.gameObject == player)
         {
             playerInSight = false;
-            Debug.Log("not in sight");
+            
 
             Vector3 direction = other.transform.position - transform.position;
             //nav.SetDestination(direction);
@@ -64,11 +64,11 @@ public class EnemySight : MonoBehaviour
 
                 if(Physics.Raycast(transform.position + transform.up, direction.normalized, out hit, col.radius))
                 {
-                    Debug.Log("youhou");
+                    
                     if(hit.collider.gameObject == player)
                     {
                         playerInSight = true;
-                        Debug.Log("in sight");
+                        
 
                         //Animation shoot
 
@@ -86,7 +86,7 @@ public class EnemySight : MonoBehaviour
         if(other.gameObject == player)
         {
             playerInSight = false;
-            Debug.Log("exit");
+            
         }
     }
 
