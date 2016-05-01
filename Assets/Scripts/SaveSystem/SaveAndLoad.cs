@@ -84,7 +84,7 @@ public class SaveAndLoad : MonoBehaviour
 		PlayerPrefs.SetInt ("NbMunitions", GameVariables.nbmunition);
 
 		//life save
-		PlayerPrefs.SetFloat ("Life", GetComponent<PlayerHealth>().health);
+		//PlayerPrefs.SetFloat ("Life", GetComponent<PlayerHealth>().health);
 	}
 
 	public void LoadPlayerPrefs()
