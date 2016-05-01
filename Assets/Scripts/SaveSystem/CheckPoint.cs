@@ -3,6 +3,7 @@ using System.Collections;
 
 public class CheckPoint : MonoBehaviour 
 {
+	[SerializeField]
 	static public bool CPactive = false;
 
 	void OnTriggerEnter(Collider collider)

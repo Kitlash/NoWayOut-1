@@ -26,19 +26,22 @@ public class SaveAndLoad : MonoBehaviour
 
 	void Update()
 	{
-		if (CheckPoint.CPactive)
+		if (CheckPoint.CPactive == true)
+		{
 			Debug.Log ("0");
 			SetPlayerPrefs ();
+			Debug.Log ("1");
 			Save ();
+		}
 
 		if (Input.GetKey (KeyCode.L))
+		{
 			Load ();
+		}
 	}
 
 	void Save()
 	{
-		PlayerPrefs.Save();
-
 		BinaryFormatter binform = new BinaryFormatter ();
 		FileStream fstream = File.Create(Application.persistentDataPath + "savefile.dat");
 
@@ -84,7 +87,9 @@ public class SaveAndLoad : MonoBehaviour
 		PlayerPrefs.SetInt ("NbMunitions", GameVariables.nbmunition);
 
 		//life save
-		//PlayerPrefs.SetFloat ("Life", GetComponent<PlayerHealth>().health);
+		PlayerPrefs.SetFloat ("Life", GetComponent<PlayerHealth>().health);
+
+		PlayerPrefs.Save ();
 	}
 
 	public void LoadPlayerPrefs()
@@ -102,7 +107,7 @@ public class SaveAndLoad : MonoBehaviour
 		transform.rotation = Quaternion.Euler (rx, ry, rz);
 
 
-		// WeaponCharacteristic load and instantiate
+		//WeaponCharacteristic load and instantiate
 		GameVariables.cur_weapon = PlayerPrefs.GetInt ("CurWeapon");
 
 		GameVariables.nbmunition = PlayerPrefs.GetInt ("NbMunitions");
