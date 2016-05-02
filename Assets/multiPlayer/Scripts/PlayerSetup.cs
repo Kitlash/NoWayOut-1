@@ -7,11 +7,11 @@ public class PlayerSetup : NetworkBehaviour {
     Camera sceneCamera; 
     void Start ()
     {
-        if (!isLocalPlayer)
+        if (isLocalPlayer)
         {
             for (int i=0; i < componentsToDisable.Length;i++)
             {
-                componentsToDisable[i].enabled = false;
+                componentsToDisable[i].enabled = true;
             }
         }
         else
