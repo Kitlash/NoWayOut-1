@@ -133,7 +133,7 @@ public class PlayerController : MonoBehaviour
 		if (velocity != Vector3.zero) {
 			rb.MovePosition (rb.position + velocity * Time.fixedDeltaTime);
 			anim.SetBool ("IsMoving", true);
-			Debug.Log ("Satus of IsMoving" + anim.GetBool ("IsMoving") + "");
+			//Debug.Log ("Satus of IsMoving : " + anim.GetBool ("IsMoving") + "");
 		} 
 		/*else 
 		{

@@ -15,13 +15,14 @@ public class EnemyShooting : MonoBehaviour
 	private PlayerHealth playerHealth;
 	private bool shooting;
 	private float scaledDamage;
+   //private H
 
 	// Use this for initialization
 	void Start () 
 	{
 		anim = GetComponent<Animator> ();
         laserShotLine = GetComponentInChildren<LineRenderer>();
-        laserShotLight = GetComponent<Light>();
+        laserShotLight = GetComponentInChildren<Light>();
 		col = GetComponent<SphereCollider> ();
 		player = GameObject.FindGameObjectWithTag(Tags.player).transform;
 		playerHealth = player.gameObject.GetComponent<PlayerHealth> ();
@@ -35,6 +36,8 @@ public class EnemyShooting : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
+        float shot = 
+
         laserShotLight.intensity = Mathf.Lerp(laserShotLight.intensity, 0f, fadeSpeed * Time.deltaTime);
 	
 	}

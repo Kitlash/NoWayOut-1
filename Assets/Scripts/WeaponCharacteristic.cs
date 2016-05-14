@@ -7,10 +7,10 @@ public class WeaponCharacteristic : MonoBehaviour
 	float damage;
 
 	[SerializeField]
-	bool IsActivated = false;
+	bool IsActivated;
 
 	[SerializeField]
-	bool InMyPoses = false;
+	bool InMyPoses;
 
 	void Start () 
 	{
@@ -28,7 +28,8 @@ public class WeaponCharacteristic : MonoBehaviour
 
 	public bool GetPoses()
 	{
-			return InMyPoses;
+		Debug.Log ("In my poses" + InMyPoses);
+		return InMyPoses;
 	}
 
 	public void SetPoses(bool value)
