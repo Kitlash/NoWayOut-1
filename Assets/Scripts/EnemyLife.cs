@@ -24,10 +24,8 @@ public class EnemyLife : MonoBehaviour
 
 	void OnTriggerEnter(Collider collider)
 	{
-        Debug.Log("enter");
 		if (collider.gameObject == weaponBase.Bullet) 
 		{
-            Debug.Log("damage");
 			damage = weaponBase.cur_damage;
 			life -= damage;
             
@@ -39,7 +37,6 @@ public class EnemyLife : MonoBehaviour
     {
         if (life <= 0)
         {
-            Debug.Log("Dead");
             Destroy(gameObject, interval);
             life = maxlife;
         }

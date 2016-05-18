@@ -95,8 +95,8 @@
     <Compile Include="Assets\Scripts\Weapons\WeaponBase.cs" />
     <Compile Include="Assets\Scripts\Weapons\WeaponCharacteristic.cs" />
     <Compile Include="Assets\Scripts\nbmunition.cs" />
-    <Compile Include="Assets\multiPlayer\MP_Scripts\MP_animator.cs" />
-    <Compile Include="Assets\multiPlayer\MP_Scripts\PlayerSetup.cs" />
+    <Compile Include="Assets\multiPlayer\Scripts\MP_animator.cs" />
+    <Compile Include="Assets\multiPlayer\Scripts\PlayerSetup.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Decor\Bin\1st readme.txt" />
@@ -111,6 +111,10 @@
     <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
     <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\WaterInclude.cginc" />
     <None Include="Assets\Standard Assets\Fonts\OpenSans\License!.txt" />
+    <None Include="Assets\Standard Assets\ParticleSystems\ParticleSystemsGuidelines.txt" />
+    <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAdd.shader" />
+    <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAddSoft.shader" />
+    <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAlpha.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2012\UnityVS.CSharp.targets" />
 </Project>
