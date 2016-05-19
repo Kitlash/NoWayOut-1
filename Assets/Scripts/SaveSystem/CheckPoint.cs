@@ -12,6 +12,8 @@ public class CheckPoint : MonoBehaviour
 		{
 			CPactive = true;
 
+			Debug.Log ("The CP is active ? " + CPactive);
+
 			Destroy (gameObject);
 		}
 	}

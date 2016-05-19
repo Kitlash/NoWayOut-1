@@ -102,7 +102,7 @@ public class WeaponBase : MonoBehaviour
 			}
 		}
 
-		Debug.Log ("range of after while i : " + i);
+		Debug.Log ("range of i after while : " + i);
 
 		if (i != GameVariables.cur_weapon) 
 		{
@@ -173,13 +173,18 @@ public class WeaponBase : MonoBehaviour
 	{
 		if (save_weapons.Count > 0)
 		{
+			Debug.Log ("state 3.1");
 			for (int i = 0; i < 4; i++) 
 			{
 				WeaponCharacteristic Wc = ReadFromSerializedWeaponCharacteristics (i);
 
+				Debug.Log ("3.2");
+
 				weapons [i].gameObject.GetComponent<WeaponCharacteristic> ().damage = Wc.damage;
 				weapons [i].gameObject.GetComponent<WeaponCharacteristic> ().InMyPoses = Wc.InMyPoses;
 				weapons [i].gameObject.GetComponent<WeaponCharacteristic> ().IsActivated = Wc.IsActivated;
+
+				Debug.Log ("3.3");
 			}
 		}
 	}
