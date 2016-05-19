@@ -17,9 +17,12 @@ public class EnemyLife : MonoBehaviour
 
     public WeaponBase weaponBase;
 
+    private Animator anim;
+
 	void Start () 
 	{
         weaponBase = GameObject.FindGameObjectWithTag(Tags.player).GetComponent<WeaponBase>();
+        anim = GetComponent<Animator>();
 	}
 
 	void OnTriggerEnter(Collider collider)
@@ -40,7 +43,8 @@ public class EnemyLife : MonoBehaviour
         if (life <= 0)
         {
             Debug.Log("Dead");
-            Destroy(gameObject, interval);
+            //Destroy(gameObject, interval);
+            anim.SetBool("Dead", true);
             life = maxlife;
         }
     }

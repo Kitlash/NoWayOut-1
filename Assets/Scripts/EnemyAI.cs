@@ -56,16 +56,17 @@ public class EnemyAI : MonoBehaviour
         {
             
             Shooting();
+            Patrolling();
         }
 
-        /*else if (enemySight.personalLastSighting != enemySight.resetPosition)
+        else if (enemySight.personalLastSighting != enemySight.resetPosition)
         {
             Chasing();
             Debug.Log("chase");
-        }*/
+        }
             
 
-        else
+        else if(!enemySight.playerInSight)
             Patrolling();
 
         laserShotLight.intensity = Mathf.Lerp(laserShotLight.intensity, 0f, fadeSpeed * Time.deltaTime);
@@ -78,7 +79,7 @@ public class EnemyAI : MonoBehaviour
 
         nav.Stop();
         playerHealth.TakeDamage(5);
-        anim.Play("Shooting");
+        anim.SetBool("Shoot", true);
         //laserShotLine.SetPosition(0, laserShotLine.transform.position);
 
         // Set the end position of the player's centre of mass.
@@ -102,7 +103,7 @@ public class EnemyAI : MonoBehaviour
 
     }
 
-    /*void Chasing()
+    void Chasing()
     {
         Vector3 sightingDeltaPos = enemySight.personalLastSighting - transform.position;
 
@@ -124,11 +125,11 @@ public class EnemyAI : MonoBehaviour
         }
         else
             chaseTimer = 0f;
-    }*/
+    }
 
     void Patrolling()
     {
-        anim.Play("isWalking");
+        
         nav.speed = patrolSpeed;
         wayPointIndex %= (patrolWayPoints.Length - 1);
 

@@ -6,13 +6,15 @@ public class EnemySight : MonoBehaviour
     public float fieldOfViewAngle = 110f;
     public bool playerInSight;
     public Vector3 personalLastSighting;
+    public Vector3 resetPosition = new Vector3(1000000f, 1000000f, 1000000f);
+    public Vector3 position = new Vector3(1000000f, 1000000f, 1000000f);
 
-    
     private GameObject player;
+    private LastPlayerSighting lastPlayerSighting;
     private NavMeshAgent nav;
     private Vector3 previousSighting;
     private SphereCollider col;
-    public Vector3 resetPosition = new Vector3(100000f, 100000f, 100000f);
+    
     //private Animator anim;
     
     //private Animator playerAnim;
@@ -32,19 +34,24 @@ public class EnemySight : MonoBehaviour
         
         
 		
-        personalLastSighting = resetPosition;
+        //personalLastSighting = resetPosition;
     }
 
     void Update()
     {
         if (playerInSight == true)
+        {
             personalLastSighting = player.transform.position;
+            Debug.Log("personal last sighting");
+        }
+            
+        
         else
             personalLastSighting = resetPosition;
-        /*if (lastPlayerSighting.position != previousSighting)
-            personalLastSighting = lastPlayerSighting.position;
+        /*if (position != previousSighting)
+            personalLastSighting = position;
 
-        previousSighting = lastPlayerSighting.position;*/
+        previousSighting = position;*/
     }
 
     void OnTriggerStay(Collider other)
