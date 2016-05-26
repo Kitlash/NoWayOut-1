@@ -107,6 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
+    <Compile Include="Assets\Humans\AllStarCharacterLibray\Scripts\Editor\TurnOffRenderers.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Decor\Bin\1st readme.txt" />

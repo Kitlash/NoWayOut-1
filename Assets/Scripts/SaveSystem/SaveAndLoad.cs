@@ -1,11 +1,11 @@
-﻿using UnityEngine;
+using UnityEngine;
+using System;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
-using System;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.IO;
 
-public class SaveAndLoad : MonoBehaviour
+public class SaveAndLoad : MonoBehaviour 
 {
 	#region : attributs
 
@@ -14,6 +14,11 @@ public class SaveAndLoad : MonoBehaviour
 	float cur_health;
 
 	System.Random rand = new System.Random();
+
+	[SerializeField]
+	CheckPoint[] cparray = new CheckPoint[4];
+
+	int i = 0;
 	#endregion
 
 	void Start()
@@ -22,17 +27,17 @@ public class SaveAndLoad : MonoBehaviour
 		Save ();
 		player = GameObject.Find ("Player");
 		cur_health = player.GetComponent<PlayerHealth> ().health;
+
 	}
 
 	void Update()
 	{
-		if (CheckPoint.CPactive == true)
+		if (cparray[i].CPactive == true)
 		{
-			Debug.Log ("0");
 			SetPlayerPrefs ();
-			Debug.Log ("1");
 			Save ();
 		}
+		cparray [i].CPactive = false;
 
 		if (Input.GetKey (KeyCode.L))
 		{
@@ -138,4 +143,11 @@ public class SaveAndLoad : MonoBehaviour
 		else 
 			cur_health = PlayerPrefs.GetFloat ("Life");
 	}
+
+	public int Index
+	{
+		get{ return i; }
+		set { i = value; }
+	}
+
 }
