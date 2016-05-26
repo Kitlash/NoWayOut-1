@@ -30,6 +30,11 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
     }
 
+    public void Restart()
+    {
+        SceneManager.LoadScene("project");
+    }
+
     public void Quit()
     {
         SceneManager.LoadScene("Menu");
