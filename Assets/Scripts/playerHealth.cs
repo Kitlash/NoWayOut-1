@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class PlayerHealth : MonoBehaviour
@@ -7,7 +8,8 @@ public class PlayerHealth : MonoBehaviour
     public float health = 100f;                         // How much health the player has left.
 
     public float AfterDeathTime = 5f;              // How much time from the player dying to the level reseting.
-   // public AudioClip deathClip;         ----->                The sound effect of the player dying.
+   
+    // public AudioClip deathClip;         ----->                The sound effect of the player dying.
 
 	private PlayerController playerMovement;              // Reference to the player movement script.
     private SceneFadeInOut sceneFadeInOut;              // Reference to the SceneFadeInOut script.
@@ -85,8 +87,12 @@ public class PlayerHealth : MonoBehaviour
 
         //If the timer is greater than or equal to the time before the level resets...
         if (timer >= AfterDeathTime)
-            // ... reset the level.
+        {  // ... reset the level.
             sceneFadeInOut.EndScene();
+            SceneManager.LoadScene("project");
+        }
+        
+            
     }
 
 

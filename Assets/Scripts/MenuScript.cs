@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class MenuScript : MonoBehaviour {
-
+    
     public Canvas QuitMenu;
     public Button startText;
     public Button exitText;
@@ -17,7 +17,13 @@ public class MenuScript : MonoBehaviour {
         exitText = exitText.GetComponent<Button>();
         QuitMenu.enabled = false;
 	}
-	public void exitPress ()
+    public void ChooseMode()
+    {
+        QuitMenu.enabled = false;
+        startText.enabled = false;
+        exitText.enabled = false;
+    }
+    public void exitPress ()
     {
         QuitMenu.enabled = true;
         startText.enabled = false;
@@ -29,6 +35,7 @@ public class MenuScript : MonoBehaviour {
         startText.enabled = true;
         exitText.enabled = true;
     }
+    
     public void startLevel()
     {
         SceneManager.LoadScene("project");
