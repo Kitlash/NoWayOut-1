@@ -23,7 +23,6 @@ public class PlayerController : MonoBehaviour
     Vector3 velocity = Vector3.zero;
     Vector3 rotation = Vector3.zero;
 
-
 	Animator anim;
 
 	#region : sprint stuff
@@ -71,19 +70,19 @@ public class PlayerController : MonoBehaviour
 		if (Input.GetKey (KeyCode.LeftShift)) 
 		{
 			_sprintcoeff = sprintCoeff;
-			anim.SetBool("IsRunning", true);
+			//anim.SetBool("IsRunning", true);
 			stamina -= Time.deltaTime;
 			if (stamina < 0) {
 				stamina = 0;
 				_sprintcoeff = 1f;
-				anim.SetBool("IsRunning", false);
+				//anim.SetBool("IsRunning", false);
 			}
 			
 		} 
 		else 
 		{
 			_sprintcoeff = 1f;
-			anim.SetBool("IsRunning", false);
+			//anim.SetBool("IsRunning", false);
 			if (stamina < MaxStamina)
 				stamina += Time.deltaTime;
 		}
@@ -94,7 +93,7 @@ public class PlayerController : MonoBehaviour
 
 		#region : Camera rotation
         float movY = Input.GetAxisRaw("Mouse X");
-        Vector3 rot = new Vector3(0f, movY, 0f) * mouseSensivity;
+		Vector3 rot = new Vector3(0f, movY, 0f)* mouseSensivity;
 
         rotation = rot;
 
@@ -108,12 +107,12 @@ public class PlayerController : MonoBehaviour
         float _jump;
         if (Input.GetButton("Jump"))
         {
-			anim.SetBool("IsJumping", true);
+			//anim.SetBool("IsJumping", true);
             _jump = jumpForce;
         }
         else
         {
-			anim.SetBool("IsJumping", false);
+			//anim.SetBool("IsJumping", false);
             _jump = 0f;
         }
 
@@ -130,8 +129,9 @@ public class PlayerController : MonoBehaviour
 	#region : PerformMove
     private void PerformMove()
     {
-		if (velocity != Vector3.zero) {
-			rb.MovePosition (rb.position + velocity * Time.fixedDeltaTime);
+		if (velocity != Vector3.zero) 
+		{
+			rb.MovePosition (rb.position + velocity  * Time.fixedDeltaTime);
 			anim.SetBool ("IsMoving", true);
 			//Debug.Log ("Satus of IsMoving : " + anim.GetBool ("IsMoving") + "");
 		} 
