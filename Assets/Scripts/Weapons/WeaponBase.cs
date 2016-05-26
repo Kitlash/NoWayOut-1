@@ -22,12 +22,6 @@ public class WeaponBase : MonoBehaviour
 	[SerializeField]
 	public List<GameObject> weapons = new List<GameObject>(4);
 
-	[SerializeField]
-	Vector3 AimPose = new Vector3();
-
-	[SerializeField]
-	Vector3 SteadPose = new Vector3();
-
 	#endregion
 
 	void Start () 
@@ -46,8 +40,6 @@ public class WeaponBase : MonoBehaviour
 	{
 		cur_damage = MyWeapon.GetComponent<WeaponCharacteristic> ().damage;
 
-		Aim ();
-
 		if (Input.GetMouseButtonDown (0) && GameVariables.nbmunition > 0) 
 		{
 			Shoot ();
@@ -61,14 +53,6 @@ public class WeaponBase : MonoBehaviour
 	}
 
 	#region : methods
-
-	void Aim()
-	{
-		if (Input.GetKey(KeyCode.F))
-			MyWeapon.transform.localPosition = AimPose;
-		if (!Input.GetKey (KeyCode.F))
-			MyWeapon.transform.localPosition = SteadPose;
-	}
 
 	void Shoot ()
 	{
@@ -98,13 +82,13 @@ public class WeaponBase : MonoBehaviour
 	void Switch()
 	{
 		int len = weapons.Count;
-		int i = (GameVariables.cur_weapon + 1) % len ;
+		int i = (GameVariables.cur_weapon + 1) % 4 ;
 
 		while(i <= len - 1  && weapons [i].GetComponent<WeaponCharacteristic> ().GetPoses () == false)
 		{
 			i++;
 
-			if (i == len - 1 ) 
+			if (i == len - 1 || i == len ) 
 			{
 				i = 0;
 			}
@@ -115,6 +99,8 @@ public class WeaponBase : MonoBehaviour
 			MyWeapon.SetActive (false);
 			weapons [i].SetActive (true);
 			GameVariables.cur_weapon = i;
+
+			Debug.Log ("Index Switch 2 = " + i);
 			Bullet_Emitter = MyWeapon;
 		} 
 	}
@@ -178,7 +164,6 @@ public class WeaponBase : MonoBehaviour
 	{
 		if (save_weapons.Count > 0)
 		{
-			Debug.Log ("state 3.1");
 			for (int i = 0; i < 4; i++) 
 			{
 				WeaponCharacteristic Wc = ReadFromSerializedWeaponCharacteristics (i);
@@ -215,7 +200,7 @@ public class WeaponBase : MonoBehaviour
 
 	public GameObject MyWeapon
 	{
-		get { return weapons [GameVariables.cur_weapon]; }
-		set { weapons [GameVariables.cur_weapon] = value; }
+		get { return weapons [GameVariables.cur_weapon % 4]; }
+		set { weapons [GameVariables.cur_weapon % 4] = value; }
 	}
 }

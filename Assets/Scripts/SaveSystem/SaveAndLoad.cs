@@ -63,7 +63,6 @@ public class SaveAndLoad : MonoBehaviour
 
 		if (File.Exists (Application.persistentDataPath + "savefile.dat")) 
 		{
-			Debug.Log ("State 2");
 
 			BinaryFormatter binform = new BinaryFormatter ();
 
@@ -71,12 +70,8 @@ public class SaveAndLoad : MonoBehaviour
 			List<WeaponBase.SerializableWeaponCharacteristics> saved_weapons = (List<WeaponBase.SerializableWeaponCharacteristics> )binform.Deserialize (fstream);
 			fstream.Close ();
 
-			Debug.Log ("State 3");
-
 			GetComponent<WeaponBase> ().save_weapons = saved_weapons;
 			GetComponent<WeaponBase>().OnAfterDeserialize ();
-
-			Debug.Log ("State 4");
 
 			LoadPlayerPrefs ();
 
@@ -116,8 +111,8 @@ public class SaveAndLoad : MonoBehaviour
 		float ry = PlayerPrefs.GetFloat ("RotY");
 		float rz = PlayerPrefs.GetFloat ("RotZ");
 
-		transform.position = new Vector3 (x, y, z);
-		transform.rotation = Quaternion.Euler (rx, ry, rz);
+		player.transform.position = new Vector3 (x, y, z);
+		player.transform.rotation = Quaternion.Euler (rx, ry, rz);
 
 
 		//WeaponCharacteristic load and instantiate

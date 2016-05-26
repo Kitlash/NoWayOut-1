@@ -75,6 +75,8 @@
      <Compile Include="Assets\Scripts\SaveSystem\SaveAndLoad.cs" />
      <Compile Include="Assets\Scripts\SaveSystem\SaveManager.cs" />
      <Compile Include="Assets\Scripts\Tags Management.cs" />
+     <Compile Include="Assets\Scripts\Weapons\Aim.cs" />
+     <Compile Include="Assets\Scripts\Weapons\Crosshair.cs" />
      <Compile Include="Assets\Scripts\Weapons\WeaponBase.cs" />
      <Compile Include="Assets\Scripts\Weapons\WeaponCharacteristic.cs" />
      <Compile Include="Assets\Scripts\nbmunition.cs" />

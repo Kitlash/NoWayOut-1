@@ -12,7 +12,7 @@ public class CheckPoint : MonoBehaviour
 	{
 		if (CPactive == true) 
 		{
-			gameObject.SetActive (false);
+			Destroy (gameObject);
 		}
 	}
 
@@ -22,7 +22,6 @@ public class CheckPoint : MonoBehaviour
 		{
 			CPactive = true;
 			GameObject.Find("Player").GetComponent<SaveAndLoad>().Index = index;
-			Debug.Log ("The CP is active ? " + CPactive);
 
 		}
 	}
@@ -30,6 +29,6 @@ public class CheckPoint : MonoBehaviour
 	public bool CPactive
 	{
 		get { return active;}
-		set { active = true;}
+		set { active = value;}
 	}
 }
