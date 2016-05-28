@@ -12,6 +12,7 @@ public class MenuScript : MonoBehaviour {
     public Button startText;
     public Button exitText;
     public Canvas Settings;
+    public Canvas LanguageCan;
 	//public Button loadText;
 
 	// Use this for initialization
@@ -25,6 +26,7 @@ public class MenuScript : MonoBehaviour {
         exitText = exitText.GetComponent<Button>();
         //loadText = loadText.GetComponent<Button> ();
         Settings = Settings.GetComponent<Canvas>();
+        LanguageCan = LanguageCan.GetComponent<Canvas>();
         QuitMenu.enabled = false;
         chooseMode.enabled = false;
         soloCanvas.enabled = false;
@@ -38,6 +40,7 @@ public class MenuScript : MonoBehaviour {
         QuitMenu.enabled = false;
         exitText.enabled = false;
         Settings.enabled = false;
+        LanguageCan.enabled = false;
     }
 
     public void back1() // back to Start menu 
@@ -48,6 +51,7 @@ public class MenuScript : MonoBehaviour {
         QuitMenu.enabled = false;
         exitText.enabled = true;
         Settings.enabled = false;
+        LanguageCan.enabled = false;
     }
     public void soloCan()
     {
@@ -57,6 +61,7 @@ public class MenuScript : MonoBehaviour {
         QuitMenu.enabled = false;
         exitText.enabled = false;
         Settings.enabled = false;
+        LanguageCan.enabled = false;
     }
     public void back2()
     {
@@ -66,6 +71,7 @@ public class MenuScript : MonoBehaviour {
         QuitMenu.enabled = false;
         exitText.enabled = false;
         Settings.enabled = false;
+        LanguageCan.enabled = false;
     }
     public void exitPress () // Quit menu
     {
@@ -84,6 +90,7 @@ public class MenuScript : MonoBehaviour {
         QuitMenu.enabled = false;
         exitText.enabled = true;
         Settings.enabled = false;
+        LanguageCan.enabled = false;
     }
     public void SettingsCan()
     {
@@ -93,6 +100,17 @@ public class MenuScript : MonoBehaviour {
         QuitMenu.enabled = false;
         exitText.enabled = false;
         Settings.enabled = true;
+        LanguageCan.enabled = false;
+    }
+    public void LangCan()
+    {
+        chooseMode.enabled = false;
+        playText.enabled = false;
+        soloCanvas.enabled = false;
+        QuitMenu.enabled = false;
+        exitText.enabled = false;
+        Settings.enabled = true;
+        LanguageCan.enabled = true;
     }
     public void back3()
     {
@@ -102,6 +120,7 @@ public class MenuScript : MonoBehaviour {
         QuitMenu.enabled = false;
         exitText.enabled = true;
         Settings.enabled = false;
+        LanguageCan.enabled = false;
     }
     public void startLevel() // new Canvas -> Button New Game
     {
@@ -114,6 +133,14 @@ public class MenuScript : MonoBehaviour {
     public void exitGame() // QuitGame -> Button Yes
     {
         Application.Quit();
+    }
+    public void French()
+    {
+        SceneManager.LoadScene("frenchMenu");
+    }
+    public void English()
+    {
+        SceneManager.LoadScene("Menu");
     }
 
 //	public void loadGame()
