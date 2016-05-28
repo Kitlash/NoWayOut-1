@@ -8,7 +8,11 @@ public class EnemyAI : MonoBehaviour
     public float chaseWaitTime = 5f;
     public float patrolWaitTime = 1f;
     public Transform[] patrolWayPoints;
+    public float flashIntensity = 3f;
+    public float fadeSpeed = 10f;
 
+    private LineRenderer laserShotLine;
+    private Light laserShotLight;
     private EnemySight enemySight;
     private NavMeshAgent nav;
     private Transform player;
@@ -24,8 +28,9 @@ public class EnemyAI : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-        
-		enemySight = GetComponent<EnemySight> ();
+        laserShotLine = GetComponentInChildren<LineRenderer>();
+        laserShotLight = GetComponentInChildren<Light>();
+        enemySight = GetComponent<EnemySight> ();
 		nav = GetComponent<NavMeshAgent> ();
 		player = GameObject.FindGameObjectWithTag (Tags.player).transform;
 		playerHealth = player.GetComponent<PlayerHealth> ();
@@ -33,7 +38,10 @@ public class EnemyAI : MonoBehaviour
         enemyShooting = GetComponent<EnemyShooting>();
         anim = GetComponent<Animator>();
         anim.Play("Idle");
-	}
+
+        laserShotLine.enabled = false;
+        laserShotLight.intensity = 0f;
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -54,14 +62,26 @@ public class EnemyAI : MonoBehaviour
             
 
         else
-            Patrolling();  
-	}
+            Patrolling();
+
+        laserShotLight.intensity = Mathf.Lerp(laserShotLight.intensity, 0f, fadeSpeed * Time.deltaTime);
+    }
 
     void Shooting()
     {
         nav.Stop();
         playerHealth.TakeDamage(5);
         anim.Play("Shooting");
+        laserShotLine.SetPosition(0, laserShotLine.transform.position);
+
+        // Set the end position of the player's centre of mass.
+        laserShotLine.SetPosition(1, player.position + Vector3.up * 1.5f);
+
+        if (anim.GetFloat("Shot") > 0.5f)
+            laserShotLine.enabled = true;
+
+        // Make the light flash.
+        laserShotLight.intensity = flashIntensity;
         Debug.Log("shot");
 
 
