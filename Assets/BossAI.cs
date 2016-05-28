@@ -62,8 +62,8 @@ public class BossAI : MonoBehaviour
         else if (!enemySight.playerInSight)
             Patrolling();
 
-        if (nav.destination == nav.nextPosition)
-            patrolTimer -= Time.deltaTime;
+        patrolTimer -= Time.deltaTime;
+            
 
         //laserShotLight.intensity = Mathf.Lerp(laserShotLight.intensity, 0f, fadeSpeed * Time.deltaTime);
     }
@@ -101,7 +101,6 @@ public class BossAI : MonoBehaviour
 
         if (nav.destination == nav.nextPosition)
         {
-
             if (patrolTimer > 0)
             {
                 nav.Stop();
