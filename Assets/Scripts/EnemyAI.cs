@@ -39,7 +39,6 @@ public class EnemyAI : MonoBehaviour
 		lastPlayerSighting = GetComponent<LastPlayerSighting> ();
         enemyShooting = GetComponent<EnemyShooting>();
         anim = GetComponent<Animator>();
-        anim.Play("Idle");
 
         nextFire = Time.time;
 

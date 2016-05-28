@@ -40,13 +40,13 @@ public class EnemyLife : MonoBehaviour
     {
         if (life <= 0)
         {
-<<<<<<< HEAD
+
             Debug.Log("Dead");
             //Destroy(gameObject, interval);
             anim.SetBool("Dead", true);
-=======
+
             Destroy(gameObject, interval);
->>>>>>> d469c6faf600c7a3af8677aa8285893b8256a1b1
+
             life = maxlife;
         }
     }
