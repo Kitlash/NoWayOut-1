@@ -48,5 +48,6 @@ public class WeaponCharacteristic : MonoBehaviour
 	{
 		return IsActivated;
 	}
+		
 	#endregion
 }

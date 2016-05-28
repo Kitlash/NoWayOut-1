@@ -69,16 +69,24 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\BossCollider.cs" />
     <Compile Include="Assets\HashIDs.cs" />
+    <Compile Include="Assets\Humans\AllStarCharacterLibray\Scripts\CamTarget.cs" />
+    <Compile Include="Assets\Humans\AllStarCharacterLibray\Scripts\CharacterDemoController.cs" />
+    <Compile Include="Assets\Humans\AllStarCharacterLibray\Scripts\MouseOrbit.cs" />
+    <Compile Include="Assets\Humans\AllStarCharacterLibray\Scripts\Outfitter.cs" />
+    <Compile Include="Assets\Humans\AllStarCharacterLibray\Scripts\RootMotionOff.cs" />
+    <Compile Include="Assets\Humans\AllStarCharacterLibray\Scripts\SkinnedMeshCombiner.cs" />
     <Compile Include="Assets\Scripts\AnimatorSetup.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />
+    <Compile Include="Assets\Scripts\Bullet1.cs" />
     <Compile Include="Assets\Scripts\CameraMovement.cs" />
     <Compile Include="Assets\Scripts\Coin.cs" />
-    <Compile Include="Assets\Scripts\EnemyAI.cs" />
-    <Compile Include="Assets\Scripts\EnemyAnimation.cs" />
-    <Compile Include="Assets\Scripts\EnemyLife.cs" />
-    <Compile Include="Assets\Scripts\EnemyShooting.cs" />
-    <Compile Include="Assets\Scripts\EnemySight.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyAI.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyAnimation.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyLife.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyShooting.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemySight.cs" />
     <Compile Include="Assets\Scripts\FadeinFadeout.cs" />
     <Compile Include="Assets\Scripts\GameVariables.cs" />
     <Compile Include="Assets\Scripts\LastPlayerSighting.cs" />
@@ -92,9 +100,12 @@
     <Compile Include="Assets\Scripts\SaveSystem\SaveAndLoad.cs" />
     <Compile Include="Assets\Scripts\SaveSystem\SaveManager.cs" />
     <Compile Include="Assets\Scripts\Tags Management.cs" />
+    <Compile Include="Assets\Scripts\Weapons\Aim.cs" />
+    <Compile Include="Assets\Scripts\Weapons\Crosshair.cs" />
     <Compile Include="Assets\Scripts\Weapons\WeaponBase.cs" />
     <Compile Include="Assets\Scripts\Weapons\WeaponCharacteristic.cs" />
     <Compile Include="Assets\Scripts\nbmunition.cs" />
+    <Compile Include="Assets\Scripts\touristRout.cs" />
     <Compile Include="Assets\multiPlayer\Scripts\MP_animator.cs" />
     <Compile Include="Assets\multiPlayer\Scripts\PlayerSetup.cs" />
   </ItemGroup>

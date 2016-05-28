@@ -1,11 +1,11 @@
-﻿using UnityEngine;
+using UnityEngine;
+using System;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
-using System;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.IO;
 
-public class SaveAndLoad : MonoBehaviour
+public class SaveAndLoad : MonoBehaviour 
 {
 	#region : attributs
 
@@ -14,6 +14,11 @@ public class SaveAndLoad : MonoBehaviour
 	float cur_health;
 
 	System.Random rand = new System.Random();
+
+	[SerializeField]
+	CheckPoint[] cparray = new CheckPoint[4];
+
+	int i = 0;
 	#endregion
 
 	void Start()
@@ -22,17 +27,17 @@ public class SaveAndLoad : MonoBehaviour
 		Save ();
 		player = GameObject.Find ("Player");
 		cur_health = player.GetComponent<PlayerHealth> ().health;
+
 	}
 
 	void Update()
 	{
-		if (CheckPoint.CPactive == true)
+		if (cparray[i].CPactive == true)
 		{
-			Debug.Log ("0");
 			SetPlayerPrefs ();
-			Debug.Log ("1");
 			Save ();
 		}
+		cparray [i].CPactive = false;
 
 		if (Input.GetKey (KeyCode.L))
 		{
@@ -58,7 +63,6 @@ public class SaveAndLoad : MonoBehaviour
 
 		if (File.Exists (Application.persistentDataPath + "savefile.dat")) 
 		{
-			Debug.Log ("State 2");
 
 			BinaryFormatter binform = new BinaryFormatter ();
 
@@ -66,12 +70,8 @@ public class SaveAndLoad : MonoBehaviour
 			List<WeaponBase.SerializableWeaponCharacteristics> saved_weapons = (List<WeaponBase.SerializableWeaponCharacteristics> )binform.Deserialize (fstream);
 			fstream.Close ();
 
-			Debug.Log ("State 3");
-
 			GetComponent<WeaponBase> ().save_weapons = saved_weapons;
 			GetComponent<WeaponBase>().OnAfterDeserialize ();
-
-			Debug.Log ("State 4");
 
 			LoadPlayerPrefs ();
 
@@ -111,8 +111,8 @@ public class SaveAndLoad : MonoBehaviour
 		float ry = PlayerPrefs.GetFloat ("RotY");
 		float rz = PlayerPrefs.GetFloat ("RotZ");
 
-		transform.position = new Vector3 (x, y, z);
-		transform.rotation = Quaternion.Euler (rx, ry, rz);
+		player.transform.position = new Vector3 (x, y, z);
+		player.transform.rotation = Quaternion.Euler (rx, ry, rz);
 
 
 		//WeaponCharacteristic load and instantiate
@@ -138,4 +138,11 @@ public class SaveAndLoad : MonoBehaviour
 		else 
 			cur_health = PlayerPrefs.GetFloat ("Life");
 	}
+
+	public int Index
+	{
+		get{ return i; }
+		set { i = value; }
+	}
+
 }
