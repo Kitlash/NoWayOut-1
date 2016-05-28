@@ -17,18 +17,22 @@ public class EnemyAI : MonoBehaviour
     private float chaseTimer;
     private float patrolTimer;
     private int wayPointIndex =0;
+    private Animator anim;
 
     private EnemyShooting enemyShooting;
 
 	// Use this for initialization
 	void Start ()
 	{
+        
 		enemySight = GetComponent<EnemySight> ();
 		nav = GetComponent<NavMeshAgent> ();
 		player = GameObject.FindGameObjectWithTag (Tags.player).transform;
 		playerHealth = player.GetComponent<PlayerHealth> ();
 		lastPlayerSighting = GetComponent<LastPlayerSighting> ();
         enemyShooting = GetComponent<EnemyShooting>();
+        anim = GetComponent<Animator>();
+        anim.Play("Idle");
 	}
 	
 	// Update is called once per frame
@@ -42,11 +46,11 @@ public class EnemyAI : MonoBehaviour
             Shooting();
         }
 
-        else if (enemySight.personalLastSighting != enemySight.resetPosition)
+        /*else if (enemySight.personalLastSighting != enemySight.resetPosition)
         {
             Chasing();
             Debug.Log("chase");
-        }
+        }*/
             
 
         else
@@ -56,13 +60,14 @@ public class EnemyAI : MonoBehaviour
     void Shooting()
     {
         nav.Stop();
-        
+        playerHealth.TakeDamage(5);
+        anim.Play("Shooting");
         Debug.Log("shot");
 
 
     }
 
-    void Chasing()
+    /*void Chasing()
     {
         Vector3 sightingDeltaPos = enemySight.personalLastSighting - transform.position;
 
@@ -84,10 +89,11 @@ public class EnemyAI : MonoBehaviour
         }
         else
             chaseTimer = 0f;
-    }
+    }*/
 
     void Patrolling()
     {
+        anim.Play("isWalking");
         nav.speed = patrolSpeed;
         wayPointIndex %= 10;
 

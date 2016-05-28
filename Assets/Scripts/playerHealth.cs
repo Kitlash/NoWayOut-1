@@ -66,7 +66,7 @@ public class PlayerHealth : MonoBehaviour
         
         deadYesOrNo = true;
 
-        //lastPlayerSighting.position = lastPlayerSighting.resetPosition;
+        lastPlayerSighting.position = lastPlayerSighting.resetPosition;
         
     }
 

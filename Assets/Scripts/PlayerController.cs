@@ -53,10 +53,15 @@ public class PlayerController : MonoBehaviour
 		staminaTexture.Apply ();
 
 		anim = GetComponent<Animator>();
+        anim.Play("Idle");
+        
 	}
 
 	void Update () 
     {
+
+        
+
 
         float movX = Input.GetAxisRaw("Horizontal");
         float movZ = Input.GetAxisRaw("Vertical");
@@ -70,19 +75,19 @@ public class PlayerController : MonoBehaviour
 		if (Input.GetKey (KeyCode.LeftShift)) 
 		{
 			_sprintcoeff = sprintCoeff;
-			//anim.SetBool("IsRunning", true);
+			anim.Play("IsRunning");
 			stamina -= Time.deltaTime;
 			if (stamina < 0) {
 				stamina = 0;
 				_sprintcoeff = 1f;
-				//anim.SetBool("IsRunning", false);
+				
 			}
 			
 		} 
 		else 
 		{
 			_sprintcoeff = 1f;
-			//anim.SetBool("IsRunning", false);
+			
 			if (stamina < MaxStamina)
 				stamina += Time.deltaTime;
 		}
@@ -107,6 +112,7 @@ public class PlayerController : MonoBehaviour
         float _jump;
         if (Input.GetButton("Jump"))
         {
+            anim.Play("isJumping");
 			//anim.SetBool("IsJumping", true);
             _jump = jumpForce;
         }
@@ -132,7 +138,8 @@ public class PlayerController : MonoBehaviour
 		if (velocity != Vector3.zero) 
 		{
 			rb.MovePosition (rb.position + velocity  * Time.fixedDeltaTime);
-			anim.SetBool ("IsMoving", true);
+            anim.Play("isWalking");
+			//anim.SetBool ("IsMoving", true);
 			//Debug.Log ("Satus of IsMoving : " + anim.GetBool ("IsMoving") + "");
 		} 
 		/*else 
