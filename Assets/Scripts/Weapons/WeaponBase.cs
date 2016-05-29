@@ -38,6 +38,8 @@ public class WeaponBase : MonoBehaviour
 
 	void Update () 
 	{
+		Bullet_Emitter.transform.position = MyWeapon.transform.position;
+
 		cur_damage = MyWeapon.GetComponent<WeaponCharacteristic> ().damage;
 
 		if (Input.GetMouseButtonDown (0) && GameVariables.nbmunition > 0) 

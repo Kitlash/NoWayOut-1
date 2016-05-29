@@ -21,7 +21,7 @@ public class EnemyLife : MonoBehaviour
 	{
 		if (life <= 0)
 		{
-			anim.SetBool("Dead", true);
+			//anim.SetBool("Dead", true);
 			Destroy(gameObject);
 			//life = maxlife;
 		}
@@ -40,5 +40,10 @@ public class EnemyLife : MonoBehaviour
 	{
 		get { return touched; }
 		set { touched = value; }
+	}
+
+	public float Life
+	{
+		get { return life; }
 	}
 }

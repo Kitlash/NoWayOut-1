@@ -15,10 +15,9 @@ public class Bullet1 : MonoBehaviour
 	{
 		if (Enemy.gameObject.CompareTag ("enemy"))
 		{
+			Debug.Log ("Touched!");
 
 			Enemy.GetComponent<EnemyLife> ().Touched = true;
-
-			Debug.Log ("" + GetComponent<EnemyLife> () != null);
 
 			Enemy.gameObject.SendMessage ("OnDamage", damage);
 
