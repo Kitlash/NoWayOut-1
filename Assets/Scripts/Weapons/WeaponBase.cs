@@ -45,7 +45,7 @@ public class WeaponBase : MonoBehaviour
 			Shoot ();
 		}
 
-		if (Input.GetKey (KeyCode.Q)) 
+		if (Input.GetKeyDown (KeyCode.Q)) 
 		{
 			Switch ();
 		}
@@ -88,7 +88,7 @@ public class WeaponBase : MonoBehaviour
 		{
 			i++;
 
-			if (i == len - 1 || i == len ) 
+			if (i == len ) 
 			{
 				i = 0;
 			}
