@@ -47,6 +47,10 @@ public class PlayerHealth : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            healthTexture.width = 0;
+        }
         
         if (health <= 0f)
         {
