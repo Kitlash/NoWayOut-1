@@ -15,6 +15,7 @@ public class BossCollider : MonoBehaviour
 	void Update()
 	{
 		float BossLife = GameObject.FindGameObjectWithTag ("boss1").GetComponent<EnemyLife>().Life;
+		BossDeath (BossLife);
 	}
 
 	void OnTriggerEnter(Collider collider)
