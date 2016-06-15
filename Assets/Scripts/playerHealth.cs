@@ -6,7 +6,7 @@ using System;
 public class PlayerHealth : MonoBehaviour
 {
 	[SerializeField]
-	public float health = 100f;                         // How much health the player has left.
+    float health = 100f;                         // How much health the player has left.
 
 	public float AfterDeathTime = 5f;              // How much time from the player dying to the level reseting.
 
@@ -106,15 +106,21 @@ public class PlayerHealth : MonoBehaviour
 	{
 		health -= amount;
 
+//
+//		if (health == 0)
+//		{
+//			anim.Play("dead");           
+//			SceneManager.LoadScene("project");
+//
+//		}
 
-		if (health == 0)
-		{
-			anim.Play("dead");           
-			SceneManager.LoadScene("project");
 
-		}
+	}
 
-
+	public float Health
+	{
+		get { return health; }
+		set { health = value; }
 	}
 
 	#region : life bar function

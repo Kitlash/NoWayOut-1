@@ -12,32 +12,60 @@ public class BossCollider : MonoBehaviour
 	[SerializeField]
 	GameObject wayout;
 
+	float BossLife;
+
+	void Start()
+	{
+		BossLife = GameObject.FindGameObjectWithTag ("boss1").GetComponent<EnemyLife>().Life;
+	}
+
 	void Update()
 	{
-		float BossLife = GameObject.FindGameObjectWithTag ("boss1").GetComponent<EnemyLife>().Life;
+		ColliderManagment ();
 		BossDeath (BossLife);
+		Debug.Log (BossLife);
+
 	}
 
 	void OnTriggerEnter(Collider collider)
 	{
 		if (collider.gameObject.name == "Player") 
 		{
-			amount -= Time.deltaTime;
-			if (amount == 0)
+			Debug.Log ("Collision detected");
+
+			while (amount > 0) 
 			{
-				gameObject.GetComponent<Collider> ().enabled = true;
-				access.GetComponent<Collider> ().enabled = true;
+				amount -= Time.fixedDeltaTime;
+				Debug.Log (amount);
 			}
 		}
 	}
 
 	void BossDeath(float life)
 	{
-		if (life == 0) 
+		if (life <= 0) 
 		{
 			gameObject.SetActive (false);
 			access.SetActive (false);
 			wayout.SetActive (false);
+		}
+	}
+
+
+	void ColliderManagment()
+	{
+		if (amount <= 0) 
+		{
+			Debug.Log ("TROLL");
+
+			gameObject.GetComponent<Collider> ().isTrigger = false;
+			gameObject.GetComponent<Collider> ().enabled = true;
+
+			Debug.Log ("Trigger = " + gameObject.GetComponent<Collider> ().isTrigger);
+			Debug.Log ("collides = " + gameObject.GetComponent<Collider> ().enabled);
+
+			access.GetComponent<Collider> ().enabled = true;
+			access.GetComponent<Collider> ().isTrigger = false;
 		}
 	}
 }

@@ -26,20 +26,24 @@ public class SaveAndLoad : MonoBehaviour
 		SetPlayerPrefs ();
 		Save ();
 		player = GameObject.Find ("Player");
-		cur_health = player.GetComponent<PlayerHealth> ().health;
+		cur_health = player.GetComponent<PlayerHealth> ().Health;
 
 	}
 
 	void Update()
 	{
+		cur_health = player.GetComponent<PlayerHealth> ().Health;
+
 		if (cparray[i].CPactive == true)
 		{
 			SetPlayerPrefs ();
 			Save ();
+
+			Debug.Log ("Save");
 		}
 		cparray [i].CPactive = false;
 
-		if (Input.GetKey (KeyCode.L))
+		if (Input.GetKey (KeyCode.L) || cur_health <= 0)
 		{
 			Load ();
 		}
@@ -95,7 +99,7 @@ public class SaveAndLoad : MonoBehaviour
 		PlayerPrefs.SetInt ("NbMunitions", GameVariables.nbmunition);
 
 		//life save
-		PlayerPrefs.SetFloat ("Life", GetComponent<PlayerHealth>().health);
+		PlayerPrefs.SetFloat ("Life", GetComponent<PlayerHealth>().Health);
 
 		PlayerPrefs.Save ();
 	}
@@ -125,18 +129,18 @@ public class SaveAndLoad : MonoBehaviour
 		// health load and instantiate
 		if (cur_health <= 20f)
 		{
-			cur_health += (float)rand.Next (30, 50);
+			player.GetComponent<PlayerHealth>().Health += (float)rand.Next (30, 50);
 		}
 		else if (cur_health <= 40f)
 		{
-			cur_health += (float)rand.Next (10, 30);
+			player.GetComponent<PlayerHealth>().Health += (float)rand.Next (10, 30);
 		}
 		else if (cur_health <= 60)
 		{
-			cur_health += (float)rand.Next (10, 20);
+			player.GetComponent<PlayerHealth>().Health += (float)rand.Next (10, 20);
 		}
 		else 
-			cur_health = PlayerPrefs.GetFloat ("Life");
+			player.GetComponent<PlayerHealth>().Health = PlayerPrefs.GetFloat ("Life");
 	}
 
 	public int Index
