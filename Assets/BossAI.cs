@@ -48,14 +48,12 @@ public class BossAI : MonoBehaviour
     void Update()
     {
 
-        if (enemySight.playerInSight)
+        /*if (enemySight.playerInSight)
         {
-
             Shooting();
-            Patrolling();
         }
 
-        else if (!enemySight.playerInSight)
+        else*/
             Patrolling();
 
 
@@ -101,12 +99,9 @@ public class BossAI : MonoBehaviour
             Debug.Log("go to next point");
         }
 
-
-        else
-        {
             nav.destination = patrolWayPoints[wayPointIndex].position;
             Debug.Log("go to point");
-        }
+
             
 
     }        
