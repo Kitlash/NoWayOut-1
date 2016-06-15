@@ -5,7 +5,7 @@ public class BossAI : MonoBehaviour
 {
     public float patrolSpeed = 2f;
     public float chaseSpeed = 5f;
-    public float chaseWaitTime = 2f;
+    public float chaseWaitTime = 5f;
     public float patrolWaitTime = 1f;
     public Transform[] patrolWayPoints;
     public float flashIntensity = 3f;
@@ -25,7 +25,6 @@ public class BossAI : MonoBehaviour
     private Animator anim;
     private float nextFire;
 
-    private EnemyShooting enemyShooting;
 
     // Use this for initialization
     void Start()
@@ -37,20 +36,17 @@ public class BossAI : MonoBehaviour
         player = GameObject.FindGameObjectWithTag(Tags.player).transform;
         playerHealth = player.GetComponent<PlayerHealth>();
         lastPlayerSighting = GetComponent<LastPlayerSighting>();
-        enemyShooting = GetComponent<EnemyShooting>();
         anim = GetComponent<Animator>();
-        anim.Play("Idle");
 
         nextFire = Time.time;
 
         //laserShotLine.enabled = false;
-        //laserShotLight.intensity = 0f;
+        //aserShotLight.intensity = 0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-
 
         if (enemySight.playerInSight)
         {
@@ -62,8 +58,6 @@ public class BossAI : MonoBehaviour
         else if (!enemySight.playerInSight)
             Patrolling();
 
-        patrolTimer -= Time.deltaTime;
-            
 
         //laserShotLight.intensity = Mathf.Lerp(laserShotLight.intensity, 0f, fadeSpeed * Time.deltaTime);
     }
@@ -101,24 +95,20 @@ public class BossAI : MonoBehaviour
 
         if (nav.destination == nav.nextPosition)
         {
-            if (patrolTimer > 0)
-            {
-                nav.Stop();
-                Debug.Log("timer not end");
-            }
-
-            else
-            {
-                Debug.Log("timer end");
-                wayPointIndex++;
-                nav.destination = patrolWayPoints[wayPointIndex].position;
-                patrolTimer = 2f;
-            }
-
-        }
-        else
+            wayPointIndex++;
+            Debug.Log("waypoint++");
             nav.destination = patrolWayPoints[wayPointIndex].position;
-        
+            Debug.Log("go to next point");
+        }
+
+
+        else
+        {
+            nav.destination = patrolWayPoints[wayPointIndex].position;
+            Debug.Log("go to point");
+        }
+            
+
     }        
 
 }

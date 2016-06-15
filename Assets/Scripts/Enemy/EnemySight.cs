@@ -34,20 +34,17 @@ public class EnemySight : MonoBehaviour
         
         
 		
-        //personalLastSighting = resetPosition;
+        personalLastSighting = resetPosition;
     }
 
     void Update()
     {
-        if (playerInSight == true)
+        if (playerInSight)
         {
             personalLastSighting = player.transform.position;
             Debug.Log("personal last sighting");
         }
             
-        
-        else
-            personalLastSighting = resetPosition;
         /*if (position != previousSighting)
             personalLastSighting = position;
 
