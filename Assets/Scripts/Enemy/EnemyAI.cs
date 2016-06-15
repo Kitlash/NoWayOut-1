@@ -24,6 +24,7 @@ public class EnemyAI : MonoBehaviour
     private int wayPointIndex =0;
     private Animator anim;
     private float nextFire;
+    private Vector3 PersonnalLastSighting;
 
     private EnemyShooting enemyShooting;
 
@@ -39,6 +40,7 @@ public class EnemyAI : MonoBehaviour
 		lastPlayerSighting = GetComponent<LastPlayerSighting> ();
         enemyShooting = GetComponent<EnemyShooting>();
         anim = GetComponent<Animator>();
+        PersonnalLastSighting = enemySight.personalLastSighting;
 
         nextFire = Time.time;
 
@@ -50,23 +52,23 @@ public class EnemyAI : MonoBehaviour
 	void Update ()
     {
         
-
         if (enemySight.playerInSight)
-        {
-            
+        {            
             Shooting();
-            Patrolling();
         }
 
-        else if (enemySight.personalLastSighting != enemySight.resetPosition)
+        else if (enemySight.personalLastSighting != enemySight.resetPosition && !enemySight.playerInSight)
         {
-            Chasing();
-            Debug.Log("chase");
+            anim.SetBool("Shoot", false);
+            Chasing();                      
+        }           
+
+        else
+        {
+            Patrolling();
+            
         }
             
-
-        else if(!enemySight.playerInSight)
-            Patrolling();
 
         laserShotLight.intensity = Mathf.Lerp(laserShotLight.intensity, 0f, fadeSpeed * Time.deltaTime);
     }
@@ -104,26 +106,9 @@ public class EnemyAI : MonoBehaviour
 
     void Chasing()
     {
-        Vector3 sightingDeltaPos = enemySight.personalLastSighting - transform.position;
-
-        if (sightingDeltaPos.sqrMagnitude > 4f)
-            nav.destination = enemySight.personalLastSighting;
-
-        nav.speed = chaseSpeed;
-
-        if (nav.remainingDistance < nav.stoppingDistance)
-        {
-            chaseTimer += Time.deltaTime;
-
-            if (chaseTimer >= chaseWaitTime)
-            {
-                lastPlayerSighting.position = lastPlayerSighting.resetPosition;
-                enemySight.personalLastSighting = lastPlayerSighting.resetPosition;
-                chaseTimer = 0f;
-            }
-        }
-        else
-            chaseTimer = 0f;
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(enemySight.personalLastSighting - transform.position), chaseSpeed * Time.deltaTime);
+        transform.position += transform.forward * chaseSpeed * Time.deltaTime;
+        nav.destination = patrolWayPoints[wayPointIndex].position;
     }
 
     void Patrolling()
