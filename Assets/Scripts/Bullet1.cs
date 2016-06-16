@@ -22,6 +22,16 @@ public class Bullet1 : MonoBehaviour
 			Enemy.gameObject.SendMessage ("OnDamage", damage);
 
 		}
+
+		if (Enemy.gameObject.CompareTag ("boss1"))
+		{
+			Debug.Log ("Touched!");
+
+			Enemy.GetComponent<EnemyLife> ().Touched = true;
+
+			Enemy.gameObject.SendMessage ("OnDamage", damage);
+
+		}
 	}
 		
 }
