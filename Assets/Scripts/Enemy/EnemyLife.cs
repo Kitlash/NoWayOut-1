@@ -13,19 +13,53 @@ public class EnemyLife : MonoBehaviour
 	[SerializeField]
 	float interval;
 
+    public float timer = 5f;
+
     private Animator anim;
+    private bool dead = false;
+    public Vector3 pos;
+    private GameObject enemy;
 
 	private bool touched = false;
 
+    void Start()
+    {
+        anim = GetComponent<Animator>();
+        pos = gameObject.transform.position;
+        enemy = GameObject.FindGameObjectWithTag("enemy");
+    }
+
 	void Update()
 	{
+        
+
 		if (life <= 0)
 		{
-			//anim.SetBool("Dead", true);
-			Destroy(gameObject);
-			//life = maxlife;
+			anim.SetBool("Dead", true);
+            timer -= Time.deltaTime;
+
+            if (timer <= 0)
+            {
+                Destroy(gameObject);
+                dead = true;
+            }
+			//life = maxlife;  	
 		}
+        
+              
 	}
+
+    void Spawn()
+    {
+        if (dead == true)
+        {
+            Debug.Log("is dead");
+            Instantiate(enemy, pos, transform.rotation);
+            
+            dead = false;
+        }
+        
+    }
 
 	void OnDamage(float dmg)
 	{

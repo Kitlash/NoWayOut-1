@@ -25,6 +25,7 @@ public class EnemyAI : MonoBehaviour
     private Animator anim;
     private float nextFire;
     private Vector3 PersonnalLastSighting;
+    private EnemyLife enemyLife;
 
     private EnemyShooting enemyShooting;
 
@@ -40,6 +41,7 @@ public class EnemyAI : MonoBehaviour
 		lastPlayerSighting = GetComponent<LastPlayerSighting> ();
         enemyShooting = GetComponent<EnemyShooting>();
         anim = GetComponent<Animator>();
+        enemyLife = GetComponent<EnemyLife>();
 
         nextFire = Time.time;
 
@@ -50,18 +52,22 @@ public class EnemyAI : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        
-        if (enemySight.playerInSight)        
-            Shooting();
 
-        else if (enemySight.personalLastSighting != enemySight.resetPosition && !enemySight.playerInSight)
+        if (enemyLife.Life > 0)
         {
-            anim.SetBool("Shoot", false);
-            Chasing();                      
-        }           
+            if (enemySight.playerInSight)
+                Shooting();
 
-        else
-            Patrolling();
+            else if (enemySight.personalLastSighting != enemySight.resetPosition && !enemySight.playerInSight)
+            {
+                anim.SetBool("Shoot", false);
+                Chasing();                      
+            }           
+
+            else
+                Patrolling();
+        }
+        
 
         laserShotLight.intensity = Mathf.Lerp(laserShotLight.intensity, 0f, fadeSpeed * Time.deltaTime);
     }
@@ -75,7 +81,7 @@ public class EnemyAI : MonoBehaviour
         playerHealth.TakeDamage(5);
         anim.SetBool("Shoot", true);
 
-        GameObject bullet = (GameObject)Instantiate(bulletPrefab, transform.position + new Vector3(0, 1.8f, 0), transform.rotation);
+        GameObject bullet = (GameObject)Instantiate(bulletPrefab, transform.position + new Vector3(0, 1.9f, 0), transform.rotation);
         bullet.name = bulletPrefab.name;
 
         Destroy(bullet, 2f);
@@ -101,15 +107,12 @@ public class EnemyAI : MonoBehaviour
         if (nav.destination == nav.nextPosition)
         {
             wayPointIndex++;
-            Debug.Log("waypoint++");
             nav.destination = patrolWayPoints[wayPointIndex].position;
-            Debug.Log("go to next point");
         }
 
         else
         {
             nav.destination = patrolWayPoints[wayPointIndex].position;
-            Debug.Log("go to point");
         }
     }
 }
