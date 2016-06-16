@@ -13,8 +13,7 @@ public class WeaponBase : MonoBehaviour
 	[SerializeField]
 	public GameObject Bullet_Emitter;
 
-	[SerializeField]
-	public GameObject Bullet;
+	GameObject Bullet;
 
 	[SerializeField]
 	public float Bullet_Forward_Force;
@@ -34,6 +33,8 @@ public class WeaponBase : MonoBehaviour
 
 		cur_damage = MyWeapon.GetComponent<WeaponCharacteristic> ().damage;
 
+		Bullet = MyWeapon.GetComponent<WeaponCharacteristic> ().Bullet;
+
 	}
 
 	void Update () 
@@ -41,6 +42,8 @@ public class WeaponBase : MonoBehaviour
 		Bullet_Emitter.transform.position = MyWeapon.transform.position;
 
 		cur_damage = MyWeapon.GetComponent<WeaponCharacteristic> ().damage;
+
+		Bullet = MyWeapon.GetComponent<WeaponCharacteristic> ().Bullet;
 
 		if (Input.GetMouseButtonDown (0) && GameVariables.nbmunition > 0) 
 		{

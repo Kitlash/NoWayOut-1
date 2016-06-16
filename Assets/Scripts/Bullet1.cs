@@ -3,6 +3,9 @@ using System.Collections;
 
 public class Bullet1 : MonoBehaviour 
 {
+	[SerializeField]
+	Texture BulletTex;
+
 	float damage;
 
 	void Start()

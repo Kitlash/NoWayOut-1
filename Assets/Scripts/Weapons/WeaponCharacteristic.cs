@@ -17,6 +17,9 @@ public class WeaponCharacteristic : MonoBehaviour
 	[SerializeField]
 	public bool InMyPoses;
 
+	[SerializeField]
+	public GameObject bullet;
+
 	#endregion
 
 	void Start () 
@@ -47,6 +50,11 @@ public class WeaponCharacteristic : MonoBehaviour
 	public bool GetActive()
 	{
 		return IsActivated;
+	}
+
+	public GameObject Bullet
+	{
+		get { return bullet; }
 	}
 		
 	#endregion
