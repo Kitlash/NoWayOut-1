@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
-
-public class MP_animator : MonoBehaviour
+using UnityEngine.Networking;
+public class MP_animator : NetworkBehaviour
 {
+   
     Animator anim;
     public float walk; //Vertical
     public float turn; //Horizontal
@@ -16,6 +17,8 @@ public class MP_animator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!isLocalPlayer)
+        { return; }
         walk = Input.GetAxis("Vertical");
         turn = Input.GetAxis("Horizontal");
         Sprinting();
