@@ -23,7 +23,7 @@ public class PlayerSetup : NetworkBehaviour {
             }
         }
     }
-     void OnDisable()
+    void OnDisable()
     {
         if  (sceneCamera!=null)
         {
