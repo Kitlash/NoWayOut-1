@@ -61,12 +61,20 @@ public class EnemyAI : MonoBehaviour
             else if (enemySight.personalLastSighting != enemySight.resetPosition && !enemySight.playerInSight)
             {
                 anim.SetBool("Shoot", false);
-                Chasing();                      
-            }           
+                Chasing();
+            }
 
             else
                 Patrolling();
         }
+
+        else
+        {
+            nav.Stop();
+            anim.SetBool("Shoot", false);
+            anim.Stop();
+        }
+            
         
 
         laserShotLight.intensity = Mathf.Lerp(laserShotLight.intensity, 0f, fadeSpeed * Time.deltaTime);
