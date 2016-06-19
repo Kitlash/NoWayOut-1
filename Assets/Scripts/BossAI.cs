@@ -9,6 +9,7 @@ public class BossAI : MonoBehaviour
     public float flashIntensity = 3f;
     public float fadeSpeed = 10f;
     public GameObject bulletPrefab;
+    public float damagePoints;
 
     private LineRenderer laserShotLine;
     private Light laserShotLight;
@@ -60,7 +61,7 @@ public class BossAI : MonoBehaviour
             return;
 
         nav.Stop();
-        playerHealth.TakeDamage(5);
+        playerHealth.TakeDamage(damagePoints);
         anim.SetBool("Shoot", true);
         
 
