@@ -69,18 +69,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\BossAI.cs" />
-    <Compile Include="Assets\BossCollider.cs" />
-    <Compile Include="Assets\HashIDs.cs" />
     <Compile Include="Assets\Humans\AllStarCharacterLibray\Scripts\CamTarget.cs" />
     <Compile Include="Assets\Humans\AllStarCharacterLibray\Scripts\CharacterDemoController.cs" />
     <Compile Include="Assets\Humans\AllStarCharacterLibray\Scripts\MouseOrbit.cs" />
     <Compile Include="Assets\Humans\AllStarCharacterLibray\Scripts\Outfitter.cs" />
     <Compile Include="Assets\Humans\AllStarCharacterLibray\Scripts\RootMotionOff.cs" />
     <Compile Include="Assets\Humans\AllStarCharacterLibray\Scripts\SkinnedMeshCombiner.cs" />
-    <Compile Include="Assets\LightSin.cs" />
-    <Compile Include="Assets\RotateCoin.cs" />
     <Compile Include="Assets\Scripts\AnimatorSetup.cs" />
+    <Compile Include="Assets\Scripts\BossAI.cs" />
+    <Compile Include="Assets\Scripts\BossCollider.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />
     <Compile Include="Assets\Scripts\Bullet1.cs" />
     <Compile Include="Assets\Scripts\CameraMovement.cs" />
@@ -92,12 +89,15 @@
     <Compile Include="Assets\Scripts\Enemy\EnemySight.cs" />
     <Compile Include="Assets\Scripts\FadeinFadeout.cs" />
     <Compile Include="Assets\Scripts\GameVariables.cs" />
+    <Compile Include="Assets\Scripts\HashIDs.cs" />
     <Compile Include="Assets\Scripts\LastPlayerSighting.cs" />
     <Compile Include="Assets\Scripts\LevelEnd.cs" />
+    <Compile Include="Assets\Scripts\LightSin.cs" />
     <Compile Include="Assets\Scripts\MenuScript.cs" />
     <Compile Include="Assets\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\PlayerHealth.cs" />
+    <Compile Include="Assets\Scripts\RotateCoin.cs" />
     <Compile Include="Assets\Scripts\RotatingItem.cs" />
     <Compile Include="Assets\Scripts\SaveSystem\CheckPoint.cs" />
     <Compile Include="Assets\Scripts\SaveSystem\SaveAndLoad.cs" />
@@ -109,6 +109,11 @@
     <Compile Include="Assets\Scripts\Weapons\WeaponCharacteristic.cs" />
     <Compile Include="Assets\Scripts\nbmunition.cs" />
     <Compile Include="Assets\Scripts\touristRout.cs" />
+    <Compile Include="Assets\multiPlayer\Scripts\MP_Billboard.cs" />
+    <Compile Include="Assets\multiPlayer\Scripts\MP_Bullet.cs" />
+    <Compile Include="Assets\multiPlayer\Scripts\MP_Health.cs" />
+    <Compile Include="Assets\multiPlayer\Scripts\MP_IK.cs" />
+    <Compile Include="Assets\multiPlayer\Scripts\MP_PlayerController.cs" />
     <Compile Include="Assets\multiPlayer\Scripts\MP_animator.cs" />
     <Compile Include="Assets\multiPlayer\Scripts\PlayerSetup.cs" />
   </ItemGroup>
