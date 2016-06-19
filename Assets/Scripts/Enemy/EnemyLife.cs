@@ -26,40 +26,30 @@ public class EnemyLife : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         pos = gameObject.transform.position;
-        enemy = GameObject.FindGameObjectWithTag("enemy");
     }
 
 	void Update()
 	{
-        
-
-		if (life <= 0)
-		{
-			anim.SetBool("Dead", true);
+        if (life <= 0)
+        {
             timer -= Time.deltaTime;
+            anim.SetBool("Dead", true);
 
             if (timer <= 0)
-            {
-                Destroy(gameObject);
-                dead = true;
-            }
-			//life = maxlife;  	
-		}
-        
-              
+            {               
+                Die();
+            }   
+        }            
 	}
 
-    void Spawn()
+    void Die()
     {
-        if (dead == true)
-        {
-            Debug.Log("is dead");
-            Instantiate(enemy, pos, transform.rotation);
-            
-            dead = false;
-        }
-        
+        transform.position = pos;
+        transform.rotation = Quaternion.identity;
+        timer = 5f;
+        life = maxlife;
     }
+
 
 	void OnDamage(float dmg)
 	{
