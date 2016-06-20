@@ -62,7 +62,7 @@ public class MP_PlayerController : NetworkBehaviour
         var holdSound = (GameObject)Instantiate(bulletSound, bulletSpawn.position, bulletSpawn.rotation);
 
         // Add velocity to the bullet
-        bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 20;
+        bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 30;
 
         // Spawn the bullet on the Clients
         NetworkServer.Spawn(bullet);
