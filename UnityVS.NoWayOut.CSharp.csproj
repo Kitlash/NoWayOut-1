@@ -107,6 +107,7 @@
     <Compile Include="Assets\Scripts\Weapons\Crosshair.cs" />
     <Compile Include="Assets\Scripts\Weapons\WeaponBase.cs" />
     <Compile Include="Assets\Scripts\Weapons\WeaponCharacteristic.cs" />
+    <Compile Include="Assets\Scripts\enemyBossAI.cs" />
     <Compile Include="Assets\Scripts\nbmunition.cs" />
     <Compile Include="Assets\Scripts\touristRout.cs" />
     <Compile Include="Assets\multiPlayer\Scripts\MP_Billboard.cs" />
