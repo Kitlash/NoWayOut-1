@@ -9,6 +9,7 @@ public class MP_PlayerController : NetworkBehaviour
     public Transform bulletSpawn;
     public Camera playerCamera;
     public GameObject bulletSound;
+
     public float speedH = 2.0f;
     public float speedV = 2.0f;
 
