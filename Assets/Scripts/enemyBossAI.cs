@@ -27,6 +27,10 @@ public class enemyBossAI : MonoBehaviour
     private Vector3 PersonnalLastSighting;
     private EnemyLife enemyLife;
 
+    [SerializeField]
+    float damages;
+    
+
     private EnemyShooting enemyShooting;
 
     // Use this for initialization
@@ -84,7 +88,7 @@ public class enemyBossAI : MonoBehaviour
             return;
 
         nav.Stop();
-        playerHealth.TakeDamage(5);
+        playerHealth.TakeDamage(damages);
         anim.SetBool("Shoot", true);
 
         GameObject bullet = (GameObject)Instantiate(bulletPrefab, transform.position + new Vector3(0, 1.9f, 0), transform.rotation);

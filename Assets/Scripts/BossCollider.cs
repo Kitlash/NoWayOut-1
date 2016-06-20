@@ -7,43 +7,51 @@ public class BossCollider : MonoBehaviour
 	float amount;
 
 	[SerializeField]
-	GameObject access;
+	GameObject[] accesses;
 
 	[SerializeField]
 	GameObject wayout;
 
-	float BossLife;
+    [SerializeField]
+    GameObject Boss;
+
+    [SerializeField]
+    int coinlim;
+
+    float BossLife;
 
 	void Start()
 	{
-		BossLife = GameObject.FindGameObjectWithTag ("boss1").GetComponent<EnemyLife>().Life;
+		BossLife = Boss.GetComponent<EnemyLife>().Life;
 	}
 
 	void Update()
 	{
-		if (GameVariables.nbcoin == 10) 
+		if (GameVariables.nbcoin == coinlim) 
 		{
 			gameObject.GetComponent<Collider> ().isTrigger = true;
-//			gameObject.GetComponent<Collider> ().enabled = false;
+            //			gameObject.GetComponent<Collider> ().enabled = false;
 
-//			access.GetComponent<Collider> ().enabled = false;
-			access.GetComponent<Collider> ().isTrigger = true;
-
-			Debug.Log (gameObject.GetComponent<Collider> ().isTrigger);
-			Debug.Log (access.GetComponent<Collider> ().isTrigger);
+            //			access.GetComponent<Collider> ().enabled = false;
+            foreach (GameObject access in accesses)
+            {
+                access.GetComponent<Collider>().isTrigger = true;
+            }
 		}
 
 		ColliderManagment ();
-		Debug.Log (gameObject.GetComponent<Collider> ().isTrigger);
-		Debug.Log (access.GetComponent<Collider> ().isTrigger);
 
 		BossLife = GameObject.FindGameObjectWithTag ("boss1").GetComponent<EnemyLife>().Life;
 
 		if (BossLife <= 0) 
 		{
 			Destroy(gameObject);
-			Destroy(access);
+            foreach (GameObject access in accesses)
+            {
+                Destroy(access);
+            }
 			Destroy(wayout);
+            GameVariables.nbcoin = 0;
 		}
 
 	}
@@ -72,8 +80,11 @@ public class BossCollider : MonoBehaviour
 			gameObject.GetComponent<Collider> ().isTrigger = false;
 			gameObject.GetComponent<Collider> ().enabled = true;
 
-			access.GetComponent<Collider> ().enabled = true;
-			access.GetComponent<Collider> ().isTrigger = false;
+            foreach (GameObject access in accesses)
+            {
+                access.GetComponent<Collider>().enabled = true;
+                access.GetComponent<Collider>().isTrigger = false;
+            }
 		}
 	}
 }
