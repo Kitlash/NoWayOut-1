@@ -21,7 +21,21 @@ public class BossCollider : MonoBehaviour
 
 	void Update()
 	{
+		if (GameVariables.nbcoin == 10) 
+		{
+			gameObject.GetComponent<Collider> ().isTrigger = true;
+//			gameObject.GetComponent<Collider> ().enabled = false;
+
+//			access.GetComponent<Collider> ().enabled = false;
+			access.GetComponent<Collider> ().isTrigger = true;
+
+			Debug.Log (gameObject.GetComponent<Collider> ().isTrigger);
+			Debug.Log (access.GetComponent<Collider> ().isTrigger);
+		}
+
 		ColliderManagment ();
+		Debug.Log (gameObject.GetComponent<Collider> ().isTrigger);
+		Debug.Log (access.GetComponent<Collider> ().isTrigger);
 
 		BossLife = GameObject.FindGameObjectWithTag ("boss1").GetComponent<EnemyLife>().Life;
 
@@ -31,14 +45,17 @@ public class BossCollider : MonoBehaviour
 			Destroy(access);
 			Destroy(wayout);
 		}
-		Debug.Log (BossLife);
 
 	}
 
 	void OnTriggerEnter(Collider collider)
 	{
+		Debug.Log (collider.gameObject.name);
+
 		if (collider.gameObject.name == "Player") 
 		{
+			Debug.Log ("Collision Detected");
+
 			while (amount > 0) 
 			{
 				amount -= Time.deltaTime;
