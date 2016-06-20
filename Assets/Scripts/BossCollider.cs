@@ -7,20 +7,38 @@ public class BossCollider : MonoBehaviour
 	float amount;
 
 	[SerializeField]
-	GameObject access;
+	GameObject[] accesses;
 
 	[SerializeField]
 	GameObject wayout;
 
-	float BossLife;
+    [SerializeField]
+    GameObject Boss;
+
+    [SerializeField]
+    int coinlim;
+
+    float BossLife;
 
 	void Start()
 	{
-		BossLife = GameObject.FindGameObjectWithTag ("boss1").GetComponent<EnemyLife>().Life;
+		BossLife = Boss.GetComponent<EnemyLife>().Life;
 	}
 
 	void Update()
 	{
+		if (GameVariables.nbcoin == coinlim) 
+		{
+			gameObject.GetComponent<Collider> ().isTrigger = true;
+            //			gameObject.GetComponent<Collider> ().enabled = false;
+
+            //			access.GetComponent<Collider> ().enabled = false;
+            foreach (GameObject access in accesses)
+            {
+                access.GetComponent<Collider>().isTrigger = true;
+            }
+		}
+
 		ColliderManagment ();
 
 		BossLife = GameObject.FindGameObjectWithTag ("boss1").GetComponent<EnemyLife>().Life;
@@ -28,17 +46,24 @@ public class BossCollider : MonoBehaviour
 		if (BossLife <= 0) 
 		{
 			Destroy(gameObject);
-			Destroy(access);
+            foreach (GameObject access in accesses)
+            {
+                Destroy(access);
+            }
 			Destroy(wayout);
+            GameVariables.nbcoin = 0;
 		}
-		Debug.Log (BossLife);
 
 	}
 
 	void OnTriggerEnter(Collider collider)
 	{
+		Debug.Log (collider.gameObject.name);
+
 		if (collider.gameObject.name == "Player") 
 		{
+			Debug.Log ("Collision Detected");
+
 			while (amount > 0) 
 			{
 				amount -= Time.deltaTime;
@@ -55,8 +80,11 @@ public class BossCollider : MonoBehaviour
 			gameObject.GetComponent<Collider> ().isTrigger = false;
 			gameObject.GetComponent<Collider> ().enabled = true;
 
-			access.GetComponent<Collider> ().enabled = true;
-			access.GetComponent<Collider> ().isTrigger = false;
+            foreach (GameObject access in accesses)
+            {
+                access.GetComponent<Collider>().enabled = true;
+                access.GetComponent<Collider>().isTrigger = false;
+            }
 		}
 	}
 }
