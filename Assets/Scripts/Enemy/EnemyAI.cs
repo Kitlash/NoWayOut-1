@@ -27,6 +27,9 @@ public class EnemyAI : MonoBehaviour
     private Vector3 PersonnalLastSighting;
     private EnemyLife enemyLife;
 
+	bool chased = false;
+	float nextChase;
+
     private EnemyShooting enemyShooting;
 
 	// Use this for initialization
@@ -55,17 +58,19 @@ public class EnemyAI : MonoBehaviour
 
         if (enemyLife.Life > 0)
         {
-            if (enemySight.playerInSight)
-                Shooting();
+			
 
-            else if (enemySight.personalLastSighting != enemySight.resetPosition && !enemySight.playerInSight)
-            {
-                anim.SetBool("Shoot", false);
-                Chasing();
-            }
+			if (enemySight.playerInSight)
+				Shooting ();
+			else if (!chased && enemySight.personalLastSighting != enemySight.resetPosition && !enemySight.playerInSight) {
+				anim.SetBool ("Shoot", false);
+				Chasing ();
+				Debug.Log ("Chase");
+			} else {
+				Patrolling ();
 
-            else
-                Patrolling();
+				Debug.Log ("Patrol");
+			}
         }
 
         else
@@ -97,6 +102,7 @@ public class EnemyAI : MonoBehaviour
         // Make the light flash.
         laserShotLight.intensity = flashIntensity;
 
+
         nextFire = Time.time + 1;
     }
 
@@ -104,13 +110,29 @@ public class EnemyAI : MonoBehaviour
     {
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(enemySight.personalLastSighting - transform.position), chaseSpeed * Time.deltaTime);
         transform.position += transform.forward * chaseSpeed * Time.deltaTime;
+
+		if (Time.time >= nextChase) {
+			chased = false;
+			enemySight.personalLastSighting = enemySight.resetPosition;
+			Debug.Log ("StopChase");
+			nav.enabled = false;
+		}
     }
 
     void Patrolling()
     {        
+		if (!nav.enabled)
+			nav.enabled = true;
+		Debug.Log ("Patrol");
         nav.speed = patrolSpeed;
         wayPointIndex %= (patrolWayPoints.Length - 1);
+		nextChase = Time.time + 3f;
+		chased = false;
+		//enemySight.personalLastSighting = enemySight.resetPosition;
+		//transform.position = patrolWayPoints [wayPointIndex].position;
 
+		if(name == "Enemy (1)")
+		Debug.Log ("I AM " + name + "I'm at : " + transform.position + ", I go to " + patrolWayPoints [wayPointIndex].position);
 
         if (nav.destination == nav.nextPosition)
         {
