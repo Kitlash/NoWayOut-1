@@ -19,7 +19,7 @@ public class WeaponBase : MonoBehaviour
 	public float Bullet_Forward_Force;
 
 	[SerializeField]
-	public List<GameObject> weapons = new List<GameObject>(4);
+	public List<GameObject> weapons;
 
 	#endregion
 
@@ -87,7 +87,7 @@ public class WeaponBase : MonoBehaviour
 	void Switch()
 	{
 		int len = weapons.Count;
-		int i = (GameVariables.cur_weapon + 1) % 4 ;
+		int i = (GameVariables.cur_weapon + 1) % 3 ;
 
 		while(i <= len - 1  && weapons [i].GetComponent<WeaponCharacteristic> ().GetPoses () == false)
 		{
@@ -169,7 +169,7 @@ public class WeaponBase : MonoBehaviour
 	{
 		if (save_weapons.Count > 0)
 		{
-			for (int i = 0; i < 4; i++) 
+			for (int i = 0; i < 3; i++) 
 			{
 				WeaponCharacteristic Wc = ReadFromSerializedWeaponCharacteristics (i);
 
@@ -205,7 +205,7 @@ public class WeaponBase : MonoBehaviour
 
 	public GameObject MyWeapon
 	{
-		get { return weapons [GameVariables.cur_weapon % 4]; }
-		set { weapons [GameVariables.cur_weapon % 4] = value; }
+		get { return weapons [GameVariables.cur_weapon % 3]; }
+		set { weapons [GameVariables.cur_weapon % 3] = value; }
 	}
 }

@@ -27,12 +27,13 @@ public class SaveAndLoad : MonoBehaviour
 		Save ();
 		player = GameObject.Find ("Player");
 		cur_health = player.GetComponent<PlayerHealth> ().Health;
-
 	}
 
 	void Update()
-	{
+    { 
 		cur_health = player.GetComponent<PlayerHealth> ().Health;
+
+        Debug.Log(cur_health);
 
 		if (cparray[i].CPactive == true)
 		{

@@ -30,6 +30,8 @@ public class PlayerHealth : MonoBehaviour
 
 	void Start()
 	{
+        health = MaxHealth;
+
 		healthRec = new Rect (Screen.width / 2, Screen.height * 9 / 10, Screen.width / 3, Screen.height / 50);
 		healthTexture = new Texture2D (1, 1);
 		healthTexture.SetPixel (0, 0, Color.red);
@@ -72,7 +74,7 @@ public class PlayerHealth : MonoBehaviour
 
 		deadYesOrNo = true;
 
-		lastPlayerSighting.position = lastPlayerSighting.resetPosition;
+		//lastPlayerSighting.position = lastPlayerSighting.resetPosition;
 
 	}
 
@@ -96,7 +98,7 @@ public class PlayerHealth : MonoBehaviour
 		if (timer >= AfterDeathTime)
 		{  // ... reset the level.
 			sceneFadeInOut.EndScene();
-			SceneManager.LoadScene("project");
+			//SceneManager.LoadScene("project");
 		}
 
 
