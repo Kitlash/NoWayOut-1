@@ -6,6 +6,6 @@ using System.Collections;
 public class MP_Billboard : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
-        transform.LookAt(Camera.main.gameObject.transform);
+        transform.LookAt(Camera.current.gameObject.transform);
     }
 }

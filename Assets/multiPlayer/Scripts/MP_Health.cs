@@ -43,6 +43,7 @@ public class MP_Health : NetworkBehaviour
     {
         healthBar.sizeDelta = new Vector2(health, healthBar.sizeDelta.y);
     }
+
     [ClientRpc]
     void RpcRespawn()
     {
