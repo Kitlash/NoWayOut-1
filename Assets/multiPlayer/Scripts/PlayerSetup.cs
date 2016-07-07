@@ -2,20 +2,31 @@
 using UnityEngine.Networking;
 public class PlayerSetup : NetworkBehaviour {
     [SerializeField]
-    Behaviour[] componentsToDisable;
+    Behaviour[] componentsToEnable;
+
+    [SerializeField]
+    GameObject[] ObjectToDisable;
+
+    [SerializeField]
+    GameObject[] ObjectToEnable;
 
     Camera sceneCamera; 
     void Start ()
     {
         if (isLocalPlayer)
         {
-            for (int i=0; i < componentsToDisable.Length;i++)
+            for (int i=0; i < componentsToEnable.Length;i++)
             {
-                componentsToDisable[i].enabled = true;
+                componentsToEnable[i].enabled = true;
             }
         }
         else
         {
+            for (int i = 0; i < ObjectToDisable.Length; i++)
+            {
+                var rend = ObjectToDisable[i].GetComponent<Renderer>();
+                rend.enabled = true;
+            }
             sceneCamera = Camera.main;
             if (sceneCamera!=null)
             {

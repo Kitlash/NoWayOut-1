@@ -8,11 +8,15 @@ public class MenuScript : MonoBehaviour {
     public Canvas QuitMenu;
     public Canvas chooseMode;
     public Canvas soloCanvas;
+
     public Button playText;
     public Button startText;
+
     public Button exitText;
     public Canvas Settings;
     public Canvas LanguageCan;
+    public Canvas HelpCan;
+
     public AudioSource mabite;
 	//public Button loadText;
 
@@ -28,12 +32,15 @@ public class MenuScript : MonoBehaviour {
         //loadText = loadText.GetComponent<Button> ();
         Settings = Settings.GetComponent<Canvas>();
         LanguageCan = LanguageCan.GetComponent<Canvas>();
+        HelpCan = HelpCan.GetComponent<Canvas>();
         QuitMenu.enabled = false;
         chooseMode.enabled = false;
         soloCanvas.enabled = false;
         Settings.enabled = false;
         //LanguageCan.enabled = false;
 		LanguageCan.enabled = false;
+        HelpCan.enabled = false;
+
         mabite.enabled = false;
     }
     public void ChooseMode() // Choose mode menu
@@ -47,6 +54,7 @@ public class MenuScript : MonoBehaviour {
         exitText.enabled = false;
         Settings.enabled = false;
         LanguageCan.enabled = false;
+        HelpCan.enabled = false;
     }
 
     public void back1() // back to Start menu 
@@ -58,6 +66,7 @@ public class MenuScript : MonoBehaviour {
         exitText.enabled = true;
         Settings.enabled = false;
         LanguageCan.enabled = false;
+        HelpCan.enabled = false;
     }
     public void soloCan()
     {
@@ -69,6 +78,7 @@ public class MenuScript : MonoBehaviour {
         exitText.enabled = false;
         Settings.enabled = false;
         LanguageCan.enabled = false;
+        HelpCan.enabled = false;
     }
     public void back2()
     {
@@ -79,6 +89,7 @@ public class MenuScript : MonoBehaviour {
         exitText.enabled = false;
         Settings.enabled = false;
         LanguageCan.enabled = false;
+        HelpCan.enabled = false;
     }
     public void exitPress () // Quit menu
     {
@@ -89,9 +100,12 @@ public class MenuScript : MonoBehaviour {
         QuitMenu.enabled = true;
         exitText.enabled = false;
         Settings.enabled = false;
+        HelpCan.enabled = false;
     }
     public void noPress() // Start menu
     {
+        mabite.enabled = true;
+        mabite.Play();
         chooseMode.enabled = false;
         playText.enabled = true;
         soloCanvas.enabled = false;
@@ -99,6 +113,7 @@ public class MenuScript : MonoBehaviour {
         exitText.enabled = true;
         Settings.enabled = false;
         LanguageCan.enabled = false;
+        HelpCan.enabled = false;
     }
     public void SettingsCan()
     {
@@ -111,9 +126,12 @@ public class MenuScript : MonoBehaviour {
         exitText.enabled = false;
         Settings.enabled = true;
         LanguageCan.enabled = false;
+        HelpCan.enabled = false;
     }
     public void LangCan()
-    {   
+    {
+        mabite.enabled = true;
+        mabite.Play();
         chooseMode.enabled = false;
         playText.enabled = false;
         soloCanvas.enabled = false;
@@ -121,6 +139,7 @@ public class MenuScript : MonoBehaviour {
         exitText.enabled = false;
         Settings.enabled = true;
         LanguageCan.enabled = true;
+        HelpCan.enabled = false;
     }
     public void back3()
     {
@@ -131,7 +150,35 @@ public class MenuScript : MonoBehaviour {
         exitText.enabled = true;
         Settings.enabled = false;
         LanguageCan.enabled = false;
+        HelpCan.enabled = false;
     }
+
+    public void HelpCanvas()
+    {
+        mabite.enabled = true;
+        mabite.Play();
+        chooseMode.enabled = false;
+        playText.enabled = false;
+        soloCanvas.enabled = false;
+        QuitMenu.enabled = false;
+        exitText.enabled = false;
+        Settings.enabled = false;
+        LanguageCan.enabled = false;
+        HelpCan.enabled = true;
+    }
+
+    public void back4()
+    {
+        chooseMode.enabled = false;
+        playText.enabled = true;
+        soloCanvas.enabled = false;
+        QuitMenu.enabled = false;
+        exitText.enabled = true;
+        Settings.enabled = false;
+        LanguageCan.enabled = false;
+        HelpCan.enabled = false;
+    }
+
     public void startLevel() // new Canvas -> Button New Game
     {
         mabite.Play();
