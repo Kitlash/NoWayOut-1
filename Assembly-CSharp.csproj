@@ -72,7 +72,6 @@
      <Compile Include="Assets\Scripts\MenuScript.cs" />
      <Compile Include="Assets\Scripts\PauseMenu.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
-     <Compile Include="Assets\Scripts\PlayerHealth.cs" />
      <Compile Include="Assets\Scripts\RotateCoin.cs" />
      <Compile Include="Assets\Scripts\RotatingItem.cs" />
      <Compile Include="Assets\Scripts\SaveSystem\CheckPoint.cs" />
@@ -85,6 +84,7 @@
      <Compile Include="Assets\Scripts\Weapons\WeaponCharacteristic.cs" />
      <Compile Include="Assets\Scripts\enemyBossAI.cs" />
      <Compile Include="Assets\Scripts\nbmunition.cs" />
+     <Compile Include="Assets\Scripts\playerHealth.cs" />
      <Compile Include="Assets\Scripts\touristRout.cs" />
      <Compile Include="Assets\multiPlayer\Scripts\MP_Billboard.cs" />
      <Compile Include="Assets\multiPlayer\Scripts\MP_Bullet.cs" />

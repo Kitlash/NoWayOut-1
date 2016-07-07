@@ -1,15 +1,36 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/BossCollider.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PlayerController.cs">
     <Files>
-      <File FileName="Assets/Scripts/BossCollider.cs" Line="29" Column="6" />
+      <File FileName="Assets/Scripts/Coin.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/BossCollider.cs" Line="29" Column="3" />
       <File FileName="Assets/Scripts/Bullet1.cs" Line="11" Column="14" />
       <File FileName="Assets/Scripts/Enemy/EnemyLife.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/SaveSystem/CheckPoint.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/SaveSystem/SaveAndLoad.cs" Line="8" Column="42" />
       <File FileName="Assets/Scripts/GameVariables.cs" Line="10" Column="31" />
-      <File FileName="Assets/Scripts/Coin.cs" Line="14" Column="30" />
       <File FileName="Assets/Scripts/Weapons/WeaponBase.cs" Line="117" Column="1" />
+      <File FileName="Assets/Scripts/Bullet.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Weapons/Crosshair.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Weapons/Aim.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Weapons/WeaponCharacteristic.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/SaveSystem/SaveManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/CameraMovement.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/FadeinFadeout.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/HashIDs.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/LastPlayerSighting.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/LevelEnd.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/LightSin.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/MenuScript.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/nbmunition.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/PauseMenu.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/PlayerController.cs" Line="178" Column="1" />
+      <File FileName="Assets/Scripts/playerHealth.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/RotateCoin.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/RotatingItem.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Tags Management.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/touristRout.cs" Line="1" Column="1" />
+      <File FileName="Assets/multiPlayer/Scripts/MP_Health.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
