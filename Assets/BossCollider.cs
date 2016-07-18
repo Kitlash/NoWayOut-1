@@ -22,7 +22,15 @@ public class BossCollider : MonoBehaviour
 	void Update()
 	{
 		ColliderManagment ();
-		BossDeath (BossLife);
+
+		BossLife = GameObject.FindGameObjectWithTag ("boss1").GetComponent<EnemyLife>().Life;
+
+		if (BossLife <= 0) 
+		{
+			Destroy(gameObject);
+			Destroy(access);
+			Destroy(wayout);
+		}
 		Debug.Log (BossLife);
 
 	}
@@ -31,23 +39,11 @@ public class BossCollider : MonoBehaviour
 	{
 		if (collider.gameObject.name == "Player") 
 		{
-			Debug.Log ("Collision detected");
-
 			while (amount > 0) 
 			{
-				amount -= Time.fixedDeltaTime;
+				amount -= Time.deltaTime;
 				Debug.Log (amount);
 			}
-		}
-	}
-
-	void BossDeath(float life)
-	{
-		if (life <= 0) 
-		{
-			gameObject.SetActive (false);
-			access.SetActive (false);
-			wayout.SetActive (false);
 		}
 	}
 
@@ -56,13 +52,8 @@ public class BossCollider : MonoBehaviour
 	{
 		if (amount <= 0) 
 		{
-			Debug.Log ("TROLL");
-
 			gameObject.GetComponent<Collider> ().isTrigger = false;
 			gameObject.GetComponent<Collider> ().enabled = true;
-
-			Debug.Log ("Trigger = " + gameObject.GetComponent<Collider> ().isTrigger);
-			Debug.Log ("collides = " + gameObject.GetComponent<Collider> ().enabled);
 
 			access.GetComponent<Collider> ().enabled = true;
 			access.GetComponent<Collider> ().isTrigger = false;

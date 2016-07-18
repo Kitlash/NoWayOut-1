@@ -21,7 +21,7 @@ public class EnemyAI : MonoBehaviour
     private LastPlayerSighting lastPlayerSighting;
     private float chaseTimer;
     private float patrolTimer;
-    private int wayPointIndex =0;
+    private int wayPointIndex = 0;
     private Animator anim;
     private float nextFire;
     private Vector3 PersonnalLastSighting;
@@ -40,7 +40,6 @@ public class EnemyAI : MonoBehaviour
 		lastPlayerSighting = GetComponent<LastPlayerSighting> ();
         enemyShooting = GetComponent<EnemyShooting>();
         anim = GetComponent<Animator>();
-        PersonnalLastSighting = enemySight.personalLastSighting;
 
         nextFire = Time.time;
 
@@ -52,10 +51,8 @@ public class EnemyAI : MonoBehaviour
 	void Update ()
     {
         
-        if (enemySight.playerInSight)
-        {            
+        if (enemySight.playerInSight)        
             Shooting();
-        }
 
         else if (enemySight.personalLastSighting != enemySight.resetPosition && !enemySight.playerInSight)
         {
@@ -64,11 +61,7 @@ public class EnemyAI : MonoBehaviour
         }           
 
         else
-        {
             Patrolling();
-            
-        }
-            
 
         laserShotLight.intensity = Mathf.Lerp(laserShotLight.intensity, 0f, fadeSpeed * Time.deltaTime);
     }
@@ -81,75 +74,42 @@ public class EnemyAI : MonoBehaviour
         nav.Stop();
         playerHealth.TakeDamage(5);
         anim.SetBool("Shoot", true);
-        //laserShotLine.SetPosition(0, laserShotLine.transform.position);
-
-        // Set the end position of the player's centre of mass.
-        //laserShotLine.SetPosition(1, player.position + Vector3.up * 1.5f);
 
         GameObject bullet = (GameObject)Instantiate(bulletPrefab, transform.position + new Vector3(0, 1.8f, 0), transform.rotation);
         bullet.name = bulletPrefab.name;
 
         Destroy(bullet, 2f);
 
-        //bullet.GetComponent<Rigidbody>().AddForce(transform.TransformDirection(Vector3.forward)* 100);
-
-        //if (anim.GetFloat("Shot") > 0.5f)
-        //    laserShotLine.enabled = true;
-
         // Make the light flash.
         laserShotLight.intensity = flashIntensity;
-        
 
         nextFire = Time.time + 1;
-
     }
 
     void Chasing()
     {
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(enemySight.personalLastSighting - transform.position), chaseSpeed * Time.deltaTime);
         transform.position += transform.forward * chaseSpeed * Time.deltaTime;
-        nav.destination = patrolWayPoints[wayPointIndex].position;
     }
 
     void Patrolling()
-    {
-        
+    {        
         nav.speed = patrolSpeed;
         wayPointIndex %= (patrolWayPoints.Length - 1);
+
 
         if (nav.destination == nav.nextPosition)
         {
             wayPointIndex++;
+            Debug.Log("waypoint++");
             nav.destination = patrolWayPoints[wayPointIndex].position;
+            Debug.Log("go to next point");
         }
-            
-            
+
         else
-            nav.destination = patrolWayPoints[wayPointIndex].position;
-        
-
-       /*patrolTimer += Time.deltaTime;
-       if (wayPointIndex == patrolWayPoints.Length - 1)
-            wayPointIndex = 0;
-       else
-            wayPointIndex++;
-
-        Debug.Log("Next round");
-        /*if (nav.remainingDistance < nav.stoppingDistance)
         {
-            
-            /*if (patrolTimer >= patrolWaitTime)
-            {
-                
-
-                patrolTimer = 0;
-            }
-
-            
+            nav.destination = patrolWayPoints[wayPointIndex].position;
+            Debug.Log("go to point");
         }
-        else
-            patrolTimer = 0;
-        
-        nav.destination = patrolWayPoints[wayPointIndex].position;*/
     }
 }
