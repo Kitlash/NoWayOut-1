@@ -1,11 +1,11 @@
-﻿using UnityEngine;
+using UnityEngine;
+using System;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
-using System;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.IO;
 
-public class SaveAndLoad : MonoBehaviour
+public class SaveAndLoad : MonoBehaviour 
 {
 	#region : attributs
 
@@ -14,6 +14,11 @@ public class SaveAndLoad : MonoBehaviour
 	float cur_health;
 
 	System.Random rand = new System.Random();
+
+	[SerializeField]
+	CheckPoint[] cparray = new CheckPoint[4];
+
+	int i = 0;
 	#endregion
 
 	void Start()
@@ -21,24 +26,31 @@ public class SaveAndLoad : MonoBehaviour
 		SetPlayerPrefs ();
 		Save ();
 		player = GameObject.Find ("Player");
-		cur_health = player.GetComponent<PlayerHealth> ().health;
+		cur_health = player.GetComponent<PlayerHealth> ().Health;
+
 	}
 
 	void Update()
 	{
-		if (CheckPoint.CPactive)
-			Debug.Log ("0");
+		cur_health = player.GetComponent<PlayerHealth> ().Health;
+
+		if (cparray[i].CPactive == true)
+		{
 			SetPlayerPrefs ();
 			Save ();
 
-		if (Input.GetKey (KeyCode.L))
+			Debug.Log ("Save");
+		}
+		cparray [i].CPactive = false;
+
+		if (Input.GetKey (KeyCode.L) || cur_health <= 0)
+		{
 			Load ();
+		}
 	}
 
 	void Save()
 	{
-		PlayerPrefs.Save();
-
 		BinaryFormatter binform = new BinaryFormatter ();
 		FileStream fstream = File.Create(Application.persistentDataPath + "savefile.dat");
 
@@ -51,8 +63,11 @@ public class SaveAndLoad : MonoBehaviour
 
 	public void Load()
 	{
+		Debug.Log ("Load state 1");
+
 		if (File.Exists (Application.persistentDataPath + "savefile.dat")) 
 		{
+
 			BinaryFormatter binform = new BinaryFormatter ();
 
 			FileStream fstream = File.Open (Application.persistentDataPath + "savefile.dat", FileMode.Open);
@@ -84,7 +99,9 @@ public class SaveAndLoad : MonoBehaviour
 		PlayerPrefs.SetInt ("NbMunitions", GameVariables.nbmunition);
 
 		//life save
-		//PlayerPrefs.SetFloat ("Life", GetComponent<PlayerHealth>().health);
+		PlayerPrefs.SetFloat ("Life", GetComponent<PlayerHealth>().Health);
+
+		PlayerPrefs.Save ();
 	}
 
 	public void LoadPlayerPrefs()
@@ -98,11 +115,11 @@ public class SaveAndLoad : MonoBehaviour
 		float ry = PlayerPrefs.GetFloat ("RotY");
 		float rz = PlayerPrefs.GetFloat ("RotZ");
 
-		transform.position = new Vector3 (x, y, z);
-		transform.rotation = Quaternion.Euler (rx, ry, rz);
+		player.transform.position = new Vector3 (x, y, z);
+		player.transform.rotation = Quaternion.Euler (rx, ry, rz);
 
 
-		// WeaponCharacteristic load and instantiate
+		//WeaponCharacteristic load and instantiate
 		GameVariables.cur_weapon = PlayerPrefs.GetInt ("CurWeapon");
 
 		GameVariables.nbmunition = PlayerPrefs.GetInt ("NbMunitions");
@@ -112,17 +129,24 @@ public class SaveAndLoad : MonoBehaviour
 		// health load and instantiate
 		if (cur_health <= 20f)
 		{
-			cur_health += (float)rand.Next (30, 50);
+			player.GetComponent<PlayerHealth>().Health += (float)rand.Next (30, 50);
 		}
 		else if (cur_health <= 40f)
 		{
-			cur_health += (float)rand.Next (10, 30);
+			player.GetComponent<PlayerHealth>().Health += (float)rand.Next (10, 30);
 		}
 		else if (cur_health <= 60)
 		{
-			cur_health += (float)rand.Next (10, 20);
+			player.GetComponent<PlayerHealth>().Health += (float)rand.Next (10, 20);
 		}
 		else 
-			cur_health = PlayerPrefs.GetFloat ("Life");
+			player.GetComponent<PlayerHealth>().Health = PlayerPrefs.GetFloat ("Life");
 	}
+
+	public int Index
+	{
+		get{ return i; }
+		set { i = value; }
+	}
+
 }

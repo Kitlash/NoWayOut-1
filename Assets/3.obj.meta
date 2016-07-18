@@ -1,0 +1,193 @@
+fileFormatVersion: 2
+guid: 7d6942b5a6f414445a7eac573591a8ec
+timeCreated: 1466014966
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: chair2_Cube
+    100004: chair2_Cube_1
+    100006: chair2_Cube_21
+    100008: chair2_Cube_3
+    100010: chair2_Cube_41
+    100012: chair2_Cube_51
+    100014: chair2_Cube_6
+    100016: chair2_Cube_71
+    100018: chair2_Cube_8
+    100020: chair2_Cube_91
+    100022: chair_1_Cube1
+    100024: chair_1_Cube_11
+    100026: chair_1_Cube_2
+    100028: chair_1_Cube_31
+    100030: chair_1_Cube_4
+    100032: chair_1_Cube_5
+    100034: chair_1_Cube_61
+    100036: chair_1_Cube_7
+    100038: chair_1_Cube_81
+    100040: chair_1_Cube_9
+    100042: Plane
+    100044: tabel_Disc
+    100046: tabel_Tube
+    100048: tabel_Tube_1
+    400000: //RootNode
+    400002: chair2_Cube
+    400004: chair2_Cube_1
+    400006: chair2_Cube_21
+    400008: chair2_Cube_3
+    400010: chair2_Cube_41
+    400012: chair2_Cube_51
+    400014: chair2_Cube_6
+    400016: chair2_Cube_71
+    400018: chair2_Cube_8
+    400020: chair2_Cube_91
+    400022: chair_1_Cube1
+    400024: chair_1_Cube_11
+    400026: chair_1_Cube_2
+    400028: chair_1_Cube_31
+    400030: chair_1_Cube_4
+    400032: chair_1_Cube_5
+    400034: chair_1_Cube_61
+    400036: chair_1_Cube_7
+    400038: chair_1_Cube_81
+    400040: chair_1_Cube_9
+    400042: Plane
+    400044: tabel_Disc
+    400046: tabel_Tube
+    400048: tabel_Tube_1
+    2300000: chair2_Cube
+    2300002: chair2_Cube_1
+    2300004: chair2_Cube_21
+    2300006: chair2_Cube_3
+    2300008: chair2_Cube_41
+    2300010: chair2_Cube_51
+    2300012: chair2_Cube_6
+    2300014: chair2_Cube_71
+    2300016: chair2_Cube_8
+    2300018: chair2_Cube_91
+    2300020: chair_1_Cube1
+    2300022: chair_1_Cube_11
+    2300024: chair_1_Cube_2
+    2300026: chair_1_Cube_31
+    2300028: chair_1_Cube_4
+    2300030: chair_1_Cube_5
+    2300032: chair_1_Cube_61
+    2300034: chair_1_Cube_7
+    2300036: chair_1_Cube_81
+    2300038: chair_1_Cube_9
+    2300040: Plane
+    2300042: tabel_Disc
+    2300044: tabel_Tube
+    2300046: tabel_Tube_1
+    3300000: chair2_Cube
+    3300002: chair2_Cube_1
+    3300004: chair2_Cube_21
+    3300006: chair2_Cube_3
+    3300008: chair2_Cube_41
+    3300010: chair2_Cube_51
+    3300012: chair2_Cube_6
+    3300014: chair2_Cube_71
+    3300016: chair2_Cube_8
+    3300018: chair2_Cube_91
+    3300020: chair_1_Cube1
+    3300022: chair_1_Cube_11
+    3300024: chair_1_Cube_2
+    3300026: chair_1_Cube_31
+    3300028: chair_1_Cube_4
+    3300030: chair_1_Cube_5
+    3300032: chair_1_Cube_61
+    3300034: chair_1_Cube_7
+    3300036: chair_1_Cube_81
+    3300038: chair_1_Cube_9
+    3300040: Plane
+    3300042: tabel_Disc
+    3300044: tabel_Tube
+    3300046: tabel_Tube_1
+    4300000: chair2_Cube
+    4300002: chair2_Cube_1
+    4300004: chair2_Cube_21
+    4300006: chair2_Cube_3
+    4300008: chair2_Cube_41
+    4300010: chair2_Cube_51
+    4300012: chair2_Cube_6
+    4300014: chair2_Cube_71
+    4300016: chair2_Cube_8
+    4300018: chair2_Cube_91
+    4300020: chair_1_Cube1
+    4300022: chair_1_Cube_11
+    4300024: chair_1_Cube_2
+    4300026: chair_1_Cube_31
+    4300028: chair_1_Cube_4
+    4300030: chair_1_Cube_5
+    4300032: chair_1_Cube_61
+    4300034: chair_1_Cube_7
+    4300036: chair_1_Cube_81
+    4300038: chair_1_Cube_9
+    4300040: Plane
+    4300042: tabel_Disc
+    4300044: tabel_Tube
+    4300046: tabel_Tube_1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

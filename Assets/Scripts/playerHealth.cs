@@ -6,17 +6,18 @@ using System;
 public class PlayerHealth : MonoBehaviour
 {
 	[SerializeField]
-    public float health = 100f;                         // How much health the player has left.
+    float health = 100f;                         // How much health the player has left.
 
-    public float AfterDeathTime = 5f;              // How much time from the player dying to the level reseting.
-   
-    // public AudioClip deathClip;         ----->                The sound effect of the player dying.
+	public float AfterDeathTime = 5f;              // How much time from the player dying to the level reseting.
+
+	// public AudioClip deathClip;         ----->                The sound effect of the player dying.
 
 	private PlayerController playerMovement;              // Reference to the player movement script.
-    private SceneFadeInOut sceneFadeInOut;              // Reference to the SceneFadeInOut script.
-    private LastPlayerSighting lastPlayerSighting;      // Reference to the LastPlayerSighting script.
-    private float timer;                                // A timer for counting to the reset of the level once the player is dead.
-    private bool deadYesOrNo;                            // A bool to show if the player is dead or not.
+	private SceneFadeInOut sceneFadeInOut;              // Reference to the SceneFadeInOut script.
+	private LastPlayerSighting lastPlayerSighting;      // Reference to the LastPlayerSighting script.
+	private float timer;                                // A timer for counting to the reset of the level once the player is dead.
+	private bool deadYesOrNo;// A bool to show if the player is dead or not.
+	private Animator anim;
 
 	#region : life bar attributs
 	[SerializeField]
@@ -33,50 +34,51 @@ public class PlayerHealth : MonoBehaviour
 		healthTexture = new Texture2D (1, 1);
 		healthTexture.SetPixel (0, 0, Color.red);
 		healthTexture.Apply ();
+		anim = GetComponent<Animator>();
 	}
 
-    void Awake()
-    {
-       
+	void Awake()
+	{
+
 		playerMovement = GetComponent<PlayerController>();
-       
-        //sceneFadeInOut = GameObject.FindGameObjectWithTag(Tags.fader).GetComponent<SceneFadeInOut>();
-        //lastPlayerSighting = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<LastPlayerSighting>();
-    }
+
+		//sceneFadeInOut = GameObject.FindGameObjectWithTag(Tags.fader).GetComponent<SceneFadeInOut>();
+		//lastPlayerSighting = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<LastPlayerSighting>();
+	}
 
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            healthTexture.width = 0;
-        }
-        
-        if (health <= 0f)
-        {
-            if (deadYesOrNo)
-            {
-                PlayerDead();
-                LevelReset();
-            }
-        }
-    }
+	void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			healthTexture.width = 0;
+		}
 
-    void PlayerDead()
-    {
+		if (health <= 0f)
+		{
+			if (deadYesOrNo)
+			{
+				PlayerDead();
+				LevelReset();
+			}
+		}
+	}
 
-        // Disable the movement.
-        playerMovement.enabled = false;
-        
-        deadYesOrNo = true;
+	void PlayerDead()
+	{
 
-        lastPlayerSighting.position = lastPlayerSighting.resetPosition;
-        
-    }
+		// Disable the movement.
+		playerMovement.enabled = false;
+
+		deadYesOrNo = true;
+
+		lastPlayerSighting.position = lastPlayerSighting.resetPosition;
+
+	}
 
 
 
-    /* void PlayerDying()
+	/* void PlayerDying()
     {
 
 
@@ -85,25 +87,41 @@ public class PlayerHealth : MonoBehaviour
     }
 
     */
-    
-    void LevelReset()
-    {
-        timer += Time.deltaTime;
 
-        //If the timer is greater than or equal to the time before the level resets...
-        if (timer >= AfterDeathTime)
-        {  // ... reset the level.
-            sceneFadeInOut.EndScene();
-            SceneManager.LoadScene("project");
-        }
-        
-            
-    }
+	void LevelReset()
+	{
+		timer += Time.deltaTime;
 
-    public void TakeDamage(float amount)
-    {
-        health -= amount;
-    }
+		//If the timer is greater than or equal to the time before the level resets...
+		if (timer >= AfterDeathTime)
+		{  // ... reset the level.
+			sceneFadeInOut.EndScene();
+			SceneManager.LoadScene("project");
+		}
+
+
+	}
+
+	public void TakeDamage(float amount)
+	{
+		health -= amount;
+
+//
+//		if (health == 0)
+//		{
+//			anim.Play("dead");           
+//			SceneManager.LoadScene("project");
+//
+//		}
+
+
+	}
+
+	public float Health
+	{
+		get { return health; }
+		set { health = value; }
+	}
 
 	#region : life bar function
 	void OnGUI()
@@ -120,10 +138,4 @@ public class PlayerHealth : MonoBehaviour
 
 	}
 	#endregion
-
-//	public float GetLife()
-//	{
-//			return health;
-//	}
 }
-
