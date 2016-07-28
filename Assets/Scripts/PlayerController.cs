@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
 
 	Animator anim;
 
+
 	#region : sprint stuff
 
 	[SerializeField]
@@ -32,9 +33,9 @@ public class PlayerController : MonoBehaviour
 
 	Rect staminaRec;
 	Texture2D staminaTexture;
+    
+    #endregion
 
-
-	#endregion
 
     float cameraRotationX = 0f;
     float currentCameraRotationX = 0f;
