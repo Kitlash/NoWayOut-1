@@ -10,6 +10,11 @@ public class PauseMenu : MonoBehaviour
 
     public AudioSource PauseAudio;
 
+    void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 	void Update ()
     {
         if (isPaused)
@@ -17,12 +22,16 @@ public class PauseMenu : MonoBehaviour
             pauseMenuCanvas.SetActive(true);
             Time.timeScale = 0;
             PauseAudio.Play();
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
         else
         {
             pauseMenuCanvas.SetActive(false);
             Time.timeScale = 1;
             PauseAudio.Pause();
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {

@@ -47,6 +47,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float maxCameraRotation = 85f;
 
+    [SerializeField]
+    Text coinsCount;
+
 	void Start () 
     {
         rb = GetComponent<Rigidbody>();
@@ -129,7 +132,9 @@ public class PlayerController : MonoBehaviour
         #endregion
 
         UpdateSpeed();
-	}
+
+        coinsCount.text = GameVariables.nbcoin.ToString();
+    }
 
     void FixedUpdate()
     {
@@ -171,17 +176,7 @@ public class PlayerController : MonoBehaviour
 
 	/*void OnGUI()
 	{
-		//Compute the ratio
-		float staminaRatio = stamina / MaxStamina;
-
-		//the bar progression by the rect size
-		float RectWidth = staminaRatio * Screen.width * 1 / 3;
-		staminaRec.width = RectWidth;
-
-		//Draw the bar
-		GUI.DrawTexture(staminaRec, staminaTexture);
-
-		GUI.Label (new Rect (450, 5, 30, 30), GameVariables.nbcoin + "");
+		//GUI.Label (new Rect (450, 5, 30, 30), GameVariables.nbcoin + "");
 	}*/
 
     void UpdateSpeed()
