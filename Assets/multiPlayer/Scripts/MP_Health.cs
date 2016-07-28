@@ -11,7 +11,7 @@ public class MP_Health : NetworkBehaviour
 
     [SyncVar(hook = "OnChangeHealth")]
     public int currentHealth = maxHealth;
-    public RectTransform healthBar;
+    public RectTransform healthBar; //Foreground
 
     private NetworkStartPosition[] spawnPoints;
 
@@ -32,7 +32,7 @@ public class MP_Health : NetworkBehaviour
         if (currentHealth <= 0)
         {
             currentHealth = maxHealth;
-
+            print("DEAD");
             // called on the Server, but invoked on the Clients
             RpcRespawn();
         }
