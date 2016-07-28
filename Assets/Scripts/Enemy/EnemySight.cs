@@ -16,6 +16,8 @@ public class EnemySight : MonoBehaviour
     private SphereCollider col;
 	private PlayerHealth playerHealth;
 
+    public AudioSource ennemyAudio;
+
     void Start()
     {
 		nav = GetComponent<NavMeshAgent>();       
@@ -23,6 +25,7 @@ public class EnemySight : MonoBehaviour
         player = GameObject.FindGameObjectWithTag(Tags.player);
 		playerHealth = player.GetComponent<PlayerHealth> ();
         personalLastSighting = resetPosition;
+        ennemyAudio.enabled = false;
     }
 
     void Update()
@@ -56,6 +59,8 @@ public class EnemySight : MonoBehaviour
     {
         if(other.gameObject == player)
             playerInSight = false;
+
+        //ennemyAudio.
     }
 
     float CalculatePathLength(Vector3 targetPosition)

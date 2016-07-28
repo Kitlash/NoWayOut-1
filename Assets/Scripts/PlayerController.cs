@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour 
 {
@@ -18,6 +19,9 @@ public class PlayerController : MonoBehaviour
 
 	[SerializeField]
 	private float sprintCoeff = 0.2f;
+
+    [SerializeField]
+    Slider speedSlider;
 
     Rigidbody rb;
     Vector3 velocity = Vector3.zero;
@@ -122,7 +126,9 @@ public class PlayerController : MonoBehaviour
         }
 
         velocity.y = _jump;
-		#endregion
+        #endregion
+
+        UpdateSpeed();
 	}
 
     void FixedUpdate()
@@ -163,7 +169,7 @@ public class PlayerController : MonoBehaviour
     }
 	#endregion
 
-	void OnGUI()
+	/*void OnGUI()
 	{
 		//Compute the ratio
 		float staminaRatio = stamina / MaxStamina;
@@ -176,5 +182,11 @@ public class PlayerController : MonoBehaviour
 		GUI.DrawTexture(staminaRec, staminaTexture);
 
 		GUI.Label (new Rect (450, 5, 30, 30), GameVariables.nbcoin + "");
-	}
+	}*/
+
+    void UpdateSpeed()
+    {
+        float staminaRatio = stamina / MaxStamina;
+        speedSlider.value = staminaRatio;
+    }
 }

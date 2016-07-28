@@ -8,17 +8,21 @@ public class PauseMenu : MonoBehaviour
     public bool isPaused;
     public GameObject pauseMenuCanvas;
 
+    public AudioSource PauseAudio;
+
 	void Update ()
     {
         if (isPaused)
         {
             pauseMenuCanvas.SetActive(true);
             Time.timeScale = 0;
+            PauseAudio.Play();
         }
         else
         {
             pauseMenuCanvas.SetActive(false);
             Time.timeScale = 1;
+            PauseAudio.Pause();
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {

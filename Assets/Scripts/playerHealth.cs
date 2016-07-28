@@ -2,11 +2,15 @@
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
 	[SerializeField]
     float health = 100f;                         // How much health the player has left.
+
+    [SerializeField]
+    Slider healthSlider;
 
 	public float AfterDeathTime = 5f;              // How much time from the player dying to the level reseting.
 
@@ -64,6 +68,8 @@ public class PlayerHealth : MonoBehaviour
 				LevelReset();
 			}
 		}
+
+        UpdateSliders();
 	}
 
 	void PlayerDead()
@@ -126,7 +132,7 @@ public class PlayerHealth : MonoBehaviour
 	}
 
 	#region : life bar function
-	void OnGUI()
+	/*void OnGUI()
 	{
 		//Compute the ratio
 		float healthRatio = health / MaxHealth;
@@ -138,6 +144,13 @@ public class PlayerHealth : MonoBehaviour
 		//Draw the bar
 		GUI.DrawTexture(healthRec, healthTexture);
 
-	}
-	#endregion
+	}*/
+
+    void UpdateSliders()
+    {
+        float healthRatio = health / MaxHealth;
+        healthSlider.value = healthRatio;
+    }
+
+    #endregion
 }
