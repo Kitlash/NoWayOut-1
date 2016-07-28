@@ -88,7 +88,7 @@ public class BossAI : MonoBehaviour
         if (nav.destination == nav.nextPosition)
         {
             patrolWaitTime -= Time.deltaTime;
-            if (patrolWaitTime <= 0)
+            if (patrolWaitTime >= 0)
             {
                 wayPointIndex++;
                 nav.destination = patrolWayPoints[wayPointIndex].position;

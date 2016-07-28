@@ -20,46 +20,61 @@ public class EnemyLife : MonoBehaviour
     public Vector3 pos;
     private GameObject enemy;
 
+	private SkinnedMeshRenderer[] visibleMesh;
+
+	NavMeshAgent nav;
+
 	private bool touched = false;
 
     void Start()
     {
         anim = GetComponent<Animator>();
         pos = gameObject.transform.position;
-        enemy = GameObject.FindGameObjectWithTag("enemy");
+		visibleMesh = GetComponentsInChildren<SkinnedMeshRenderer> ();
+		nav = GetComponent<NavMeshAgent> ();
     }
 
 	void Update()
 	{
-        
+        if (life <= 0)
+        {
+            //timer -= Time.deltaTime;
+            anim.SetBool("Dead", true);
 
-		if (life <= 0)
-		{
-			anim.SetBool("Dead", true);
-            timer -= Time.deltaTime;
-
-            if (timer <= 0)
-            {
-                Destroy(gameObject);
-                dead = true;
-            }
-			//life = maxlife;  	
-		}
-        
-              
+            //if (timer <= 0)
+            //{               
+                Die();
+            //}   
+        }            
 	}
 
-    void Spawn()
+    void Die()
     {
-        if (dead == true)
-        {
-            Debug.Log("is dead");
-            Instantiate(enemy, pos, transform.rotation);
-            
-            dead = false;
-        }
-        
+		foreach (var grap in visibleMesh) {
+			grap.enabled = false;
+		}
+		nav.enabled = false;
+		StartCoroutine (RespTimer ());
     }
+
+	IEnumerator RespTimer(){
+		yield return new WaitForSeconds (3f);
+		Respawn ();
+	}
+
+	void Respawn()
+	{
+		foreach (var graph in visibleMesh) {
+			graph.enabled = true;
+		}
+
+		transform.position = pos;
+		transform.rotation = Quaternion.identity;
+		timer = 5f;
+		life = maxlife;
+		nav.enabled = true;
+		anim.StartPlayback ();
+	}
 
 	void OnDamage(float dmg)
 	{

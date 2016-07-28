@@ -1,14 +1,15 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Weapons/WeaponBase.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/BossCollider.cs">
     <Files>
-      <File FileName="Assets/Scripts/Bullet1.cs" Line="13" Column="72" />
+      <File FileName="Assets/Scripts/BossCollider.cs" Line="29" Column="6" />
+      <File FileName="Assets/Scripts/Bullet1.cs" Line="11" Column="14" />
+      <File FileName="Assets/Scripts/Enemy/EnemyLife.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/SaveSystem/CheckPoint.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/SaveSystem/SaveAndLoad.cs" Line="8" Column="42" />
+      <File FileName="Assets/Scripts/GameVariables.cs" Line="10" Column="31" />
+      <File FileName="Assets/Scripts/Coin.cs" Line="14" Column="30" />
       <File FileName="Assets/Scripts/Weapons/WeaponBase.cs" Line="117" Column="1" />
-      <File FileName="Assets/Scripts/Coin.cs" Line="15" Column="25" />
-      <File FileName="Assets/Standard Assets/Environment/Water/Water/Scripts/PlanarReflection.cs" Line="200" Column="13" />
-      <File FileName="Assets/Scripts/Enemy/EnemyLife.cs" Line="26" Column="21" />
-      <File FileName="Assets/RotateCoin.cs" Line="14" Column="27" />
-      <File FileName="Assets/LightSin.cs" Line="35" Column="20" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

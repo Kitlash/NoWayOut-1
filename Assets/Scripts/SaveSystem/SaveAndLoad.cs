@@ -13,7 +13,7 @@ public class SaveAndLoad : MonoBehaviour
 
 	float cur_health;
 
-	System.Random rand = new System.Random();
+	//System.Random rand = new System.Random();
 
 	[SerializeField]
 	CheckPoint[] cparray = new CheckPoint[4];
@@ -27,12 +27,13 @@ public class SaveAndLoad : MonoBehaviour
 		Save ();
 		player = GameObject.Find ("Player");
 		cur_health = player.GetComponent<PlayerHealth> ().Health;
-
 	}
 
 	void Update()
-	{
+    { 
 		cur_health = player.GetComponent<PlayerHealth> ().Health;
+
+        Debug.Log(cur_health);
 
 		if (cparray[i].CPactive == true)
 		{
@@ -127,20 +128,20 @@ public class SaveAndLoad : MonoBehaviour
 		cur_health = PlayerPrefs.GetFloat ("Life");
 
 		// health load and instantiate
-		if (cur_health <= 20f)
-		{
-			player.GetComponent<PlayerHealth>().Health += (float)rand.Next (30, 50);
-		}
-		else if (cur_health <= 40f)
-		{
-			player.GetComponent<PlayerHealth>().Health += (float)rand.Next (10, 30);
-		}
-		else if (cur_health <= 60)
-		{
-			player.GetComponent<PlayerHealth>().Health += (float)rand.Next (10, 20);
-		}
-		else 
-			player.GetComponent<PlayerHealth>().Health = PlayerPrefs.GetFloat ("Life");
+//		if (cur_health <= 20f)
+//		{
+//			player.GetComponent<PlayerHealth>().Health += (float)rand.Next (30, 50);
+//		}
+//		else if (cur_health <= 40f)
+//		{
+//			player.GetComponent<PlayerHealth>().Health += (float)rand.Next (10, 30);
+//		}
+//		else if (cur_health <= 60)
+//		{
+//			player.GetComponent<PlayerHealth>().Health += (float)rand.Next (10, 20);
+//		}
+//		else 
+		 player.GetComponent<PlayerHealth>().Health = PlayerPrefs.GetFloat ("Life");
 	}
 
 	public int Index
